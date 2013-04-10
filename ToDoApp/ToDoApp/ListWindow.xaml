@@ -1,0 +1,11 @@
+﻿<Window x:Class="ToDoApp.ListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="List" Height="350" Width="525">
+    <Grid>
+        <ListBox Height="260" HorizontalAlignment="Left" Margin="10,10,0,0" Name="itemlist" VerticalAlignment="Top" Width="481" />
+        <Button Content="Add Item" Height="23" HorizontalAlignment="Left" Margin="10,276,0,0" Name="add" VerticalAlignment="Top" Width="130" Click="add_Click" />
+        <Button Content="Edit Item" Height="23" HorizontalAlignment="Left" Margin="190,276,0,0" Name="edit" VerticalAlignment="Top" Width="130" Click="edit_Click" />
+        <Button Content="Delete Item" Height="23" HorizontalAlignment="Left" Margin="361,276,0,0" Name="delete" VerticalAlignment="Top" Width="130" Click="delete_Click" />
+    </Grid>
+</Window>
