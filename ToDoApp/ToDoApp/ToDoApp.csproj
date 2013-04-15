@@ -103,9 +103,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Base.cs" />
     <Compile Include="BoardWindow.xaml.cs">
       <DependentUpon>BoardWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Item.cs" />
     <Compile Include="ItemModalWindow.xaml.cs">
       <DependentUpon>ItemModalWindow.xaml</DependentUpon>
     </Compile>
