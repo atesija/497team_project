@@ -16,10 +16,12 @@ namespace ToDoApp
     /// <summary>
     /// Interaction logic for ListWindow.xaml
     /// </summary>
-    public partial class ListWindow : Window
+    public partial class ListWindow :  UserControl
     {
+
         public ListWindow()
         {
+           
             InitializeComponent();
             itemlist.Items.Add("Potatos");
             itemlist.Items.Add("Carrots");

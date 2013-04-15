@@ -16,7 +16,7 @@ namespace ToDoApp
     /// <summary>
     /// Interaction logic for ListWindow.xaml
     /// </summary>
-    public partial class BoardWindow : Window
+    public partial class BoardWindow : UserControl
     {
         public BoardWindow()
         {
@@ -37,8 +37,7 @@ namespace ToDoApp
 
         private void open_Click(object sender, RoutedEventArgs e)
         {
-            ListWindow list = new ListWindow();
-            list.Show();
+            Content = new ListWindow();
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)

@@ -15,16 +15,21 @@ using System.Windows.Shapes;
 namespace ToDoApp
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : UserControl
     {
-        public MainWindow()
+
+        public LoginWindow()
         {
             InitializeComponent();
-            WindowHolder.Content = new LoginWindow();
         }
 
-     
+        private void login_Click(object sender, RoutedEventArgs e)
+        {
+            //transfer holder to next view
+            Content = new BoardWindow();
+
+        }
     }
 }
