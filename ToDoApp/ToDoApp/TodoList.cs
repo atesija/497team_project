@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace ToDoApp
 {
-    //Holds a bunch of items (basically is the todo list)
-    class ItemList : Base
+    //Holds a bunch of items
+    class TodoList : Base
     {
         //The list of items
         List<Item> items;
@@ -25,9 +26,14 @@ namespace ToDoApp
             return i;
         }
 
-        protected override void SaveToFile(System.IO.StreamWriter file)
+        public override void SaveToFile(StreamWriter file)
         {
-            base.SaveToFile(file);
+            foreach (Item i in items)
+                i.SaveToFile(file);
+        }
+
+        public override void ReadFromFile(StreamReader file)
+        {
         }
     }
 }

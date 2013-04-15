@@ -23,8 +23,12 @@ namespace ToDoApp
         }
 
         //Used to write the object to a file
-        //Requires the file to be opened before calling and closed after
-        protected virtual void SaveToFile(StreamWriter file)
+        public virtual void SaveToFile(StreamWriter file)
+        {
+        }
+
+        //Reads the object in from a file
+        public virtual void ReadFromFile(StreamReader file)
         {
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace ToDoApp
 {
@@ -36,9 +37,12 @@ namespace ToDoApp
             return this.rank;
         }
 
-        protected override void SaveToFile(System.IO.StreamWriter file)
+        public override void SaveToFile(StreamWriter file)
         {
-            base.SaveToFile(file);
+        }
+
+        public override void ReadFromFile(StreamReader file)
+        {
         }
     }
 }
