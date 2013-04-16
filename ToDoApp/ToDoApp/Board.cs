@@ -11,20 +11,27 @@ namespace ToDoApp
         //A list of the different todo lists
         List<TodoList> todoLists;
 
-        //Adds a list to todoLists
-        public void AddList(string name)
+        public Board()
         {
-            TodoList l = new TodoList();
-            l.SetName(name);
+            todoLists = new List<TodoList>();
+        }
+
+        //Adds a list to todoLists
+        public void AddList(TodoList l)
+        {
             todoLists.Add(l);
         }
 
-        //Changes the name of the list at location
-        public void EditListAt(string name, int at)
+        //Adds a list at the given index
+        public void AddListAt(TodoList l, int at)
         {
-            TodoList l = todoLists[at];
-            l.SetName(name);
-            todoLists[at] = l;
+            todoLists.Insert(at, l);
+        }
+
+        //Changes the name of the list at location
+        public void EditListAt(int at, string name)
+        {
+            todoLists[at].SetName(name);
         }
 
         //Gets a reference to the item at the location
