@@ -7,17 +7,17 @@ using System.IO;
 namespace ToDoApp
 {
     //Holds a bunch of items
-    class TodoList : Base
+    class ItemList : Base
     {
         //The list of items
         List<Item> items;
 
-        public TodoList()
+        public ItemList()
         {
             items = new List<Item>();
         }
 
-        public TodoList(string name)
+        public ItemList(string name)
         {
             items = new List<Item>();
             this.SetName(name);

@@ -8,22 +8,44 @@ namespace ToDoApp
 {
     class Board : Base
     {
+        const int NUM_LISTS = 3;
+
         //A list of the different todo lists
-        List<TodoList> todoLists;
+        ItemList[] todoLists;
 
         public Board()
         {
-            todoLists = new List<TodoList>();
+            todoLists = new ItemList[NUM_LISTS];
+            for (int i = 0; i < NUM_LISTS; ++i)
+                todoLists[i] = new ItemList();
+            this.SetNames();
         }
 
+        public Board(string name)
+        {
+            todoLists = new ItemList[NUM_LISTS];
+            for (int i = 0; i < NUM_LISTS; ++i)
+                todoLists[i] = new ItemList();
+            this.SetNames();
+            this.SetName(name);
+        }
+
+        private void SetNames()
+        {
+            todoLists[0].SetName("To Do");
+            todoLists[1].SetName("Doing");
+            todoLists[2].SetName("Done");
+        }
+
+        /*
         //Adds a list to todoLists
-        public void AddList(TodoList l)
+        public void AddList(ItemList l)
         {
             todoLists.Add(l);
         }
 
         //Adds a list at the given index
-        public void AddListAt(TodoList l, int at)
+        public void AddListAt(ItemList l, int at)
         {
             todoLists.Insert(at, l);
         }
@@ -35,35 +57,31 @@ namespace ToDoApp
         }
 
         //Gets a reference to the item at the location
-        public TodoList GetListAt(int at)
+        public ItemList GetListAt(int at)
         {
             return todoLists[at];
         }
 
         //Removes the item at the location and returns it
-        public TodoList TakeListAt(int at)
+        public ItemList TakeListAt(int at)
         {
-            TodoList l = todoLists[at];
+            ItemList l = todoLists[at];
             todoLists.RemoveAt(at);
             return l;
         }
+        */
 
-        //Opens a file and saves the entire tree (Board, List, Item) to the file
-        public void SaveToFile()
+        public override void SaveToFile(StreamWriter file)
         {
-            StreamWriter file = new StreamWriter("lists.txt");
-
             //TODO: save board to file
 
             //Save each todo list to file
-            foreach (TodoList t in todoLists)
-                t.SaveToFile(file);
+            foreach (ItemList i in todoLists)
+                i.SaveToFile(file);
         }
 
-        //Opens a file and reads the data from it
-        public void ReadFromFile()
+        public override void ReadFromFile(StreamReader file)
         {
-            StreamReader file = new StreamReader("lists.txt");
         }
     }
 }
