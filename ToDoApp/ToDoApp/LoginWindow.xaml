@@ -8,9 +8,10 @@
     <Grid>
         <TextBox Height="23" HorizontalAlignment="Left" Margin="213,137,0,0" Name="userInput" VerticalAlignment="Top" Width="120" />
         <PasswordBox Height="23" HorizontalAlignment="Left" Margin="213,166,0,0" Name="passwordInput" VerticalAlignment="Top" Width="120" />
-        <Button Content="Log In" Height="23" HorizontalAlignment="Left" Margin="213,195,0,0" Name="login" VerticalAlignment="Top" Width="75" Click="login_Click" />
+        <Button Content="Log In" Height="23" HorizontalAlignment="Left" Margin="195,195,0,0" Name="login" VerticalAlignment="Top" Width="75" Click="login_Click" />
         <Label Content="Username:" Height="28" HorizontalAlignment="Left" Margin="141,137,0,0" Name="ulabel" VerticalAlignment="Top" />
         <Label Content="Password:" Height="28" HorizontalAlignment="Left" Margin="144,164,0,0" Name="pswdlabel" VerticalAlignment="Top" />
         <Label Content="Windows Lists Application" Height="58" HorizontalAlignment="Left" Margin="100,44,0,0" Name="label1" VerticalAlignment="Top" FontSize="20" Width="310" FontWeight="Bold" FontFamily="Verdana"/>
+        <Button Content="Register" Height="23" HorizontalAlignment="Left" Margin="276,195,0,0" Name="button1" VerticalAlignment="Top" Width="75" />
     </Grid>
 </UserControl>

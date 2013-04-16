@@ -2,10 +2,15 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Height="300" Width="475">
+    
     <Grid>
-        <ListBox Height="260" HorizontalAlignment="Left" Margin="12,6,0,0" Name="itemlist" VerticalAlignment="Top" Width="453" />
-        <Button Content="Add Item" Height="23" HorizontalAlignment="Left" Margin="12,271,0,0" Name="add" VerticalAlignment="Top" Width="130" Click="add_Click" />
-        <Button Content="Edit Item" Height="23" HorizontalAlignment="Left" Margin="173,271,0,0" Name="edit" VerticalAlignment="Top" Width="130" Click="edit_Click" />
-        <Button Content="Delete Item" Height="23" HorizontalAlignment="Left" Margin="333,271,0,0" Name="delete" VerticalAlignment="Top" Width="130" Click="delete_Click" />
+        <ListView Height="233" HorizontalAlignment="Left" Margin="12,14,0,0" Name="itemlist" VerticalAlignment="Top" Width="144" />
+        <ListView Height="233" HorizontalAlignment="Left" Margin="166,14,0,0" Name="listView1" VerticalAlignment="Top" Width="144" />
+        <ListView Height="233" HorizontalAlignment="Left" Margin="319,14,0,0" Name="listView2" VerticalAlignment="Top" Width="144" />
+
+        <Button Content="Add Item" Height="23" HorizontalAlignment="Left" Margin="12,271,0,0" Name="add" VerticalAlignment="Top" Width="90" Click="add_Click" />
+        <Button Content="Edit Item" Height="23" HorizontalAlignment="Right" Margin="0,271,277,0" Name="edit" VerticalAlignment="Top" Width="90" Click="edit_Click" />
+        <Button Content="Delete Item" Height="23" HorizontalAlignment="Left" Margin="373,271,0,0" Name="delete" VerticalAlignment="Top" Width="90
+                " Click="delete_Click" />
     </Grid>
 </UserControl>
