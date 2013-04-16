@@ -11,6 +11,43 @@ namespace ToDoApp
         //A list of the different todo lists
         List<TodoList> todoLists;
 
+        public Board()
+        {
+            todoLists = new List<TodoList>();
+        }
+
+        //Adds a list to todoLists
+        public void AddList(TodoList l)
+        {
+            todoLists.Add(l);
+        }
+
+        //Adds a list at the given index
+        public void AddListAt(TodoList l, int at)
+        {
+            todoLists.Insert(at, l);
+        }
+
+        //Changes the name of the list at location
+        public void EditListAt(int at, string name)
+        {
+            todoLists[at].SetName(name);
+        }
+
+        //Gets a reference to the item at the location
+        public TodoList GetListAt(int at)
+        {
+            return todoLists[at];
+        }
+
+        //Removes the item at the location and returns it
+        public TodoList TakeListAt(int at)
+        {
+            TodoList l = todoLists[at];
+            todoLists.RemoveAt(at);
+            return l;
+        }
+
         //Opens a file and saves the entire tree (Board, List, Item) to the file
         public void SaveToFile()
         {

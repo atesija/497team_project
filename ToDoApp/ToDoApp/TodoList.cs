@@ -12,6 +12,29 @@ namespace ToDoApp
         //The list of items
         List<Item> items;
 
+        public TodoList()
+        {
+            items = new List<Item>();
+        }
+
+        public TodoList(string name)
+        {
+            items = new List<Item>();
+            this.SetName(name);
+        }
+
+        //Adds an item to the todo list
+        public void AddItem(Item i)
+        {
+            items.Add(i);
+        }
+
+        //Edits an item at the given index
+        public void EditItemAt(int at, string name, string details, int rank)
+        {
+            items[at].Edit(name, details, rank);
+        }
+
         //Gets a reference to the item in the list
         public Item GetItemAt(int at)
         {

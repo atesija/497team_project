@@ -15,24 +15,46 @@ namespace ToDoApp
         //A number from 1 to 5 based on how important the task is
         int rank;
 
-        void SetDetails(string details)
+        public Item()
+        {
+            this.SetName(string.Empty);
+            details = string.Empty;
+            rank = 1;
+        }
+
+        public Item(string name, string details, int rank)
+        {
+            this.SetName(name);
+            this.details = details;
+            this.rank = rank;
+        }
+
+        //Edit the item in one function
+        public void Edit(string name, string details, int rank)
+        {
+            this.SetName(name);
+            this.details = details;
+            this.rank = rank;
+        }
+
+        public void SetDetails(string details)
         {
             this.details = details;
         }
 
-        string GetDetails()
+        public string GetDetails()
         {
             return details;
         }
 
-        void SetRank(int rank)
+        public void SetRank(int rank)
         {
             if (rank < 1 || rank > 5)
                 return;
             this.rank = rank;
         }
 
-        int GetRank()
+        public int GetRank()
         {
             return this.rank;
         }
