@@ -1,6 +1,6 @@
 ﻿<Window x:Class="ToDoApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="To Do List" Height="350" Width="525">
+        Title="To Do List" Height="350" Width="525" Icon="Icon.ico">
     <ContentControl Name="WindowHolder"/>
 </Window>
