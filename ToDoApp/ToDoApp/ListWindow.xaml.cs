@@ -108,7 +108,7 @@ namespace ToDoApp
                 {
                     //Add item to the board
                     board.EditItem(1, doingList.SelectedIndex, item);
-                    curList = todoList;
+                    curList = doingList;
                 }
                 catch (ToDoException exception)
                 {
@@ -123,7 +123,7 @@ namespace ToDoApp
                 {
                     //Add item to the board
                     board.EditItem(2, doneList.SelectedIndex, item);
-                    curList = todoList;
+                    curList = doneList;
                 }
                 catch (ToDoException exception)
                 {
@@ -153,12 +153,12 @@ namespace ToDoApp
             else if (doingList.SelectedIndex >= 0)
             {
                 board.DeleteItemAt(1, doingList.SelectedIndex);
-                doingList.Items.RemoveAt(todoList.SelectedIndex);
+                doingList.Items.RemoveAt(doingList.SelectedIndex);
             }
             else if (doneList.SelectedIndex >= 0)
             {
                 board.DeleteItemAt(2, doneList.SelectedIndex);
-                doneList.Items.RemoveAt(todoList.SelectedIndex);
+                doneList.Items.RemoveAt(doneList.SelectedIndex);
             }
 
         }
