@@ -39,8 +39,17 @@ namespace ToDoApp
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            ItemModalWindow addItem = new ItemModalWindow();
-            addItem.ShowDialog();
+           // ItemModalWindow addItem = new ItemModalWindow();
+           // addItem.ShowDialog();
+
+            //TODO: Create dialog box that returns a string or Item
+            Item item = new Item("todo", "blerg", 1);
+
+            //Add item to the board
+                       
+
+            //Add returned board to the list widget
+            todoList.Items.Add(item.GetName());
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
