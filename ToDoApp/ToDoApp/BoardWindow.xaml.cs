@@ -43,64 +43,52 @@ namespace ToDoApp
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            Board board = new Board("ToDo");
-
-            try
-            {
-               //TODO: Create dialog box that returns a string or board
-
-
-               //Add returned board to the boardmanager
-               boardManager.AddBoard(board);
-            }
-            catch (ToDoException exception)
-            {
-               MessageBox.Show(exception.getMessage(), "Add Board", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-               return;
-            }
-
-            //Add returned board to the list widget
-            listbox.Items.Add(board.GetName());
+           AddBoardDialog addDialog = new AddBoardDialog(boardManager, listBox);
+           addDialog.ShowDialog();
         }
 
         private void open_Click(object sender, RoutedEventArgs e)
         {
-           if (listbox.SelectedItem == null)
+           if (listBox.SelectedItem == null)
            {
-              MessageBox.Show("Please select a Board", "Open Board", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+              MessageBox.Show("Please select a Board", "Open Board", 
+                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
               return;
            }
 
-           Board board = boardManager.GetBoardAt(listbox.SelectedIndex);
+           Board board = boardManager.GetBoardAt(listBox.SelectedIndex);
            Content = new ListWindow(boardManager, board);
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
            // Check that an Item is selected
-           if (listbox.SelectedItem == null)
+           if (listBox.SelectedItem == null)
            {
-              MessageBox.Show("Please select a Board to delete", "Delete Board", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+              MessageBox.Show("Please select a Board to delete", "Delete Board", 
+                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
               return;
            }
 
            // Ask user to confirm
-           String confirmDeleteMessage = "Are you sure you would like to delete this board and its content?";
+           String confirmDeleteMessage = 
+              "Are you sure you would like to delete this board and its contents?";
            String confirmDeleteCaption = "Delete Board";
            MessageBoxButton confirmDeleteButton = MessageBoxButton.YesNo;
            MessageBoxImage confirmDeleteIcon = MessageBoxImage.Warning;
 
-           MessageBoxResult result = MessageBox.Show(confirmDeleteMessage, confirmDeleteCaption, confirmDeleteButton, confirmDeleteIcon);
+           MessageBoxResult result = MessageBox.Show(confirmDeleteMessage, 
+              confirmDeleteCaption, confirmDeleteButton, confirmDeleteIcon);
 
            if (result == MessageBoxResult.No)
               return;
 
            // Remove all data corresponding to Item
-
+           boardManager.DeleteBoardAt(listBox.SelectedIndex);
 
            // Remove Item from the list
-           listbox.Items.Remove(listbox.SelectedItem);
-           listbox.UnselectAll();
+           listBox.Items.Remove(listBox.SelectedItem);
+           listBox.UnselectAll();
         }
     }
 }
