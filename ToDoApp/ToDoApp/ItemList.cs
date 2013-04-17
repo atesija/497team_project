@@ -7,7 +7,7 @@ using System.IO;
 namespace ToDoApp
 {
     //Holds a bunch of items
-    class ItemList : Base
+    public class ItemList : Base
     {
         //The list of items
         List<Item> items;
@@ -35,6 +35,12 @@ namespace ToDoApp
             items[at].Edit(name, details, rank);
         }
 
+        //Edits an item at the given index
+        public void EditItemAt(int at, Item i)
+        {
+            items[at] = i;
+        }
+
         //Gets a reference to the item in the list
         public Item GetItemAt(int at)
         {
@@ -47,6 +53,11 @@ namespace ToDoApp
             Item i = items[at];
             items.RemoveAt(at);
             return i;
+        }
+
+        public void DeleteItemAt(int at)
+        {
+            items.RemoveAt(at);
         }
 
         public override void SaveToFile(StreamWriter file)

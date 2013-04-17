@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ToDoApp
 {
-    class Board : Base
+    public class Board : Base
     {
         const int NUM_LISTS = 3;
 

@@ -7,7 +7,7 @@ using System.IO;
 namespace ToDoApp
 {
     //Base class for the Board, List, and Item objects so they can be written to a file easily
-    class Base
+    public class Base
     {
         //The name of the object to be displayed
         string name;
