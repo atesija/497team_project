@@ -33,7 +33,7 @@ namespace ToDoApp
              *if doesn't exisit yet it will create a new file
              *not doing this is version 2
              */
-            boardManager = new BoardManager(userInput.Text, passwordInput.GetValue().ToString());
+            boardManager = new BoardManager(userInput.Text, passwordInput.Password);
 
             //transfer holder to next view
             Content = new BoardWindow(boardManager);

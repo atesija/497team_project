@@ -24,28 +24,24 @@ namespace ToDoApp
 
         private ListView draggedList;
 
-        public ListWindow()
+        private Board board;
+
+        private BoardManager boardManager;
+
+        private int selectedBoard;
+
+        public ListWindow(BoardManager boardManager_, int index)
         {
-           
+            boardManager = boardManager_;
+            //board = current boardManager
             InitializeComponent();
-            todoList.Items.Add("Potatos");
-            todoList.Items.Add("Carrots");
-            todoList.Items.Add("Capers");
-            todoList.Items.Add("Beer");
-            todoList.Items.Add("Anchovies");
-            todoList.Items.Add("Beer");
-            todoList.Items.Add("Flour");
-            todoList.Items.Add("Green Peppers");
-            todoList.Items.Add("Cabbage");
-            todoList.Items.Add("Jalapenos");
-            todoList.Items.Add("Pizza");
+
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
             ItemModalWindow addItem = new ItemModalWindow();
             addItem.ShowDialog();
-            todoList.Items.Add("Beer");
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)

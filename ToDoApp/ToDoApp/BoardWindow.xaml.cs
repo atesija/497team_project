@@ -19,9 +19,11 @@ namespace ToDoApp
     public partial class BoardWindow : UserControl
     {
         private BoardManager boardManager;
+
         public BoardWindow(BoardManager boardManager_)
         {
             boardManager = boardManager_;
+
             InitializeComponent();
             listbox.Items.Add("Groceries");//REMOVE 
             listbox.Items.Add("Todo");//REMOVE
@@ -39,7 +41,9 @@ namespace ToDoApp
 
         private void open_Click(object sender, RoutedEventArgs e)
         {
-            Content = new ListWindow();
+            //pass in currently selected board
+            //passes the correct board from the board manager
+            Content = new ListWindow(boardManager, listbox.SelectedIndex);
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
