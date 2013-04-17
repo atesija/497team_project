@@ -69,12 +69,12 @@ namespace ToDoApp
            }
 
            // Ask user to confirm
-           String messageBoxText = "Are you sure you would like to delete this board and its content?";
-           String caption = "Delete Board";
-           MessageBoxButton button = MessageBoxButton.YesNo;
-           MessageBoxImage icon = MessageBoxImage.Warning;
+           String confirmDeleteMessage = "Are you sure you would like to delete this board and its content?";
+           String confirmDeleteCaption = "Delete Board";
+           MessageBoxButton confirmDeleteButton = MessageBoxButton.YesNo;
+           MessageBoxImage confirmDeleteIcon = MessageBoxImage.Warning;
 
-           MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+           MessageBoxResult result = MessageBox.Show(confirmDeleteMessage, confirmDeleteCaption, confirmDeleteButton, confirmDeleteIcon);
 
            if (result == MessageBoxResult.No)
               return;
