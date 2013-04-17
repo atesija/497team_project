@@ -34,13 +34,27 @@ namespace ToDoApp
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
+           // Save data
+           boardManager.SaveToFile();
 
+           // Direct user to login screen
+           Content = new LoginWindow();
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Create dialog box that returns a string or board
             Board board = new Board("ToDo");
+
+            try
+            {
+               //TODO: Create dialog box that returns a string or board
+
+            }
+            catch (ToDoException exception)
+            {
+               MessageBox.Show(exception.getMessage(), "Add Board", MessageBoxButton.OK, MessageBoxImage.Error);
+               return;
+            }
 
             //Add returned board to the boardmanager
             boardManager.AddBoard(board);
