@@ -32,12 +32,17 @@ namespace ToDoApp
         public void SaveToFile()
         {
             StreamWriter file = new StreamWriter(fileName + ".txt");
+            foreach (Board b in boards)
+                b.SaveToFile(file);
+            file.Close();
         }
 
         //Opens a file and reads the data from it
         public void ReadFromFile()
         {
             StreamReader file = new StreamReader(fileName + ".txt");
+
+            file.Close();
         }
 
         //Returns a board from the selected location

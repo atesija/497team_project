@@ -73,7 +73,7 @@ namespace ToDoApp
         public override void SaveToFile(StreamWriter file)
         {
             foreach (Item i in items)
-                i.SaveToFile(file);
+                file.WriteLine(i.GetName() + "`" + i.GetDetails() + "`" + i.GetRank().ToString());
         }
 
         public override void ReadFromFile(StreamReader file)
