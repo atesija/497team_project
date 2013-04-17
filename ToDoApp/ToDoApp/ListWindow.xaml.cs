@@ -56,25 +56,49 @@ namespace ToDoApp
             //open dialog box that returns strings or item
             Item item = new Item("updated", "blerrrrrg", 2);
 
+            ListView curList;
             //eddit currently selected item
             if (todoList.SelectedIndex >= 0)
             {
                 board.EditItem(0, todoList.SelectedIndex, item);
+                curList = todoList;
                 
             }
             else if (doingList.SelectedIndex >= 0)
             {
                 board.EditItem(1, doingList.SelectedIndex, item);
+                curList = doingList;
             }
             else
             {
                 board.EditItem(2, doneList.SelectedIndex, item);
+                curList = doneList;
             }
+            int curSelected = curList.SelectedIndex;
+            curList.Items.RemoveAt(curSelected);
+            curList.Items.Insert(curSelected, item.GetName());
+            curList.SelectedIndex = curSelected;
 
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
         {
+            //eddit currently selected item
+            if (todoList.SelectedIndex >= 0)
+            {
+                board.DeleteItemAt(0, todoList.SelectedIndex);
+                todoList.Items.RemoveAt(todoList.SelectedIndex);
+            }
+            else if (doingList.SelectedIndex >= 0)
+            {
+                board.DeleteItemAt(1, doingList.SelectedIndex);
+                doingList.Items.RemoveAt(todoList.SelectedIndex);
+            }
+            else
+            {
+                board.DeleteItemAt(2, doneList.SelectedIndex);
+                doneList.Items.RemoveAt(todoList.SelectedIndex);
+            }
 
         }
 
