@@ -82,6 +82,7 @@ namespace ToDoApp
         {
             //open dialog box that returns strings or item
             Item item = new Item("updated", "blerrrrrg", 2);
+            int listIndex = -1;
 
             //try catch should be in diaglog box but leaving it here
 
@@ -92,8 +93,8 @@ namespace ToDoApp
                 try
                 {
                     //Add item to the board
-                    board.EditItem(0, todoList.SelectedIndex, item);
                     curList = todoList;
+                    listIndex = 0;
                 }
                 catch (ToDoException exception)
                 {
@@ -107,8 +108,8 @@ namespace ToDoApp
                 try
                 {
                     //Add item to the board
-                    board.EditItem(1, doingList.SelectedIndex, item);
                     curList = todoList;
+                    listIndex = 1;
                 }
                 catch (ToDoException exception)
                 {
@@ -122,8 +123,8 @@ namespace ToDoApp
                 try
                 {
                     //Add item to the board
-                    board.EditItem(2, doneList.SelectedIndex, item);
                     curList = todoList;
+                    listIndex = 2;
                 }
                 catch (ToDoException exception)
                 {
@@ -136,6 +137,9 @@ namespace ToDoApp
             if (curList != null)
             {
                 int curSelected = curList.SelectedIndex;
+                item = board.GetItemAt(listIndex, curSelected);
+                ItemModalWindow addItem = new ItemModalWindow(item);
+                addItem.ShowDialog();
                 curList.Items.RemoveAt(curSelected);
                 curList.Items.Insert(curSelected, item.GetName());
                 curList.SelectedIndex = curSelected;
