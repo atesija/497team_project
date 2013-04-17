@@ -46,7 +46,7 @@ namespace ToDoApp
             Item item = new Item("todo", "blerg", 1);
 
             //Add item to the board
-                       
+            board.AddItem(item);
 
             //Add returned board to the list widget
             todoList.Items.Add(item.GetName());
@@ -54,6 +54,22 @@ namespace ToDoApp
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
+            //open dialog box that returns strings or item
+            Item item = new Item("updated", "blerrrrrg", 2);
+
+            //eddit currently selected item
+            if (todoList.SelectedIndex >= 0)
+            {
+                board.EditItem(0, todoList.SelectedIndex, item);
+            }
+            else if (doingList.SelectedIndex >= 0)
+            {
+                board.EditItem(1, doingList.SelectedIndex, item);
+            }
+            else
+            {
+                board.EditItem(2, doneList.SelectedIndex, item);
+            }
 
         }
 
@@ -70,6 +86,7 @@ namespace ToDoApp
                 ListView listView = sender as ListView;
                 listView.Items.Add(item);
                 draggedList.Items.Remove(draggedList.SelectedItem);
+                
             }
         }
 
@@ -128,6 +145,34 @@ namespace ToDoApp
             while (current != null);
             return null;
 
+        }
+
+        private void listSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListView curList = sender as ListView;
+            if (curList == todoList)
+            {
+                //disable selected in doing and done
+                doingList.UnselectAll();
+                doneList.UnselectAll();
+            }
+            else if (curList == doingList)
+            {
+                //disable selected in todo and done
+                todoList.UnselectAll();
+                doneList.UnselectAll();
+            }
+            else if (curList == doneList)
+            {
+                //disable in todo and doing
+                todoList.UnselectAll();
+                doingList.UnselectAll();
+            }
+            foreach (string selected in e.AddedItems)
+            {
+                int forsel = curList.Items.IndexOf(selected);
+                curList.SelectedIndex = forsel;
+            }            
         }
 
       

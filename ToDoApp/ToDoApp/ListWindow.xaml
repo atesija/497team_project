@@ -10,12 +10,15 @@
 
         <ListView Height="233" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
                   DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
+                  SelectionChanged="listSelectionChanged" SelectionMode="Single"
                   HorizontalAlignment="Left" Margin="5,23,0,0" Name="todoList" VerticalAlignment="Top" Width="144" />
         <ListView Height="233" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
                   DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
+                  SelectionChanged="listSelectionChanged" SelectionMode="Single"
                   HorizontalAlignment="Left" Margin="165.5,23,0,0" Name="doingList" VerticalAlignment="Top" Width="144" />
         <ListView Height="233" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
                   DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
+                  SelectionChanged="listSelectionChanged" SelectionMode="Single"
                   HorizontalAlignment="Left" Margin="325,23,0,0" Name="doneList" VerticalAlignment="Top" Width="144" />
 
         <Label Content="To Do" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0" Name="todoLabel" VerticalAlignment="Top" Width="81" />
