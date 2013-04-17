@@ -19,7 +19,7 @@ namespace ToDoApp
 
         public BoardManager(string username, string password)
         {
-            fileName = username + password;
+            fileName = username.GetHashCode().ToString() + password.GetHashCode().ToString();
             boards = new List<Board>();
         }
 
