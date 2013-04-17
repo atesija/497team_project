@@ -87,6 +87,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddBoardDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ItemModalWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +116,9 @@
     <Compile Include="BoardManager.cs" />
     <Compile Include="BoardWindow.xaml.cs">
       <DependentUpon>BoardWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddBoardDialog.xaml.cs">
+      <DependentUpon>AddBoardDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToDoException.cs" />
     <Compile Include="Item.cs" />
