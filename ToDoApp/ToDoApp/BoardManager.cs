@@ -44,6 +44,7 @@ namespace ToDoApp
         //Adds a board
         public void AddBoard(Board b)
         {
+            //if (boards.Exists(b))
             boards.Add(b);
         }
 
