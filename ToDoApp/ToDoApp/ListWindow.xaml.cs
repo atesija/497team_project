@@ -22,6 +22,8 @@ namespace ToDoApp
     {
         private Point startPoint;
 
+        private ListView draggedList;
+
         public ListWindow()
         {
            
@@ -63,6 +65,7 @@ namespace ToDoApp
                 String item = e.Data.GetData("itemFormat") as String;
                 ListView listView = sender as ListView;
                 listView.Items.Add(item);
+                draggedList.Items.Remove(draggedList.SelectedItem);
             }
         }
 
@@ -89,13 +92,15 @@ namespace ToDoApp
 
                 if (listViewItem != null)
                 {
+                    draggedList = listView;
 
                     String item = (String)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
 
                     DataObject dragData = new DataObject("itemFormat", item);
                     DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
 
-                    listView.Items.Remove(listView.SelectedItem);
+                    
+                    //listView.Items.Remove(listView.SelectedItem);
 
                 }
             }

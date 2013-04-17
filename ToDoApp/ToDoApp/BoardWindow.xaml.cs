@@ -18,8 +18,10 @@ namespace ToDoApp
     /// </summary>
     public partial class BoardWindow : UserControl
     {
-        public BoardWindow()
+        private BoardManager boardManager;
+        public BoardWindow(BoardManager boardManager_)
         {
+            boardManager = boardManager_;
             InitializeComponent();
             listbox.Items.Add("Groceries");//REMOVE 
             listbox.Items.Add("Todo");//REMOVE

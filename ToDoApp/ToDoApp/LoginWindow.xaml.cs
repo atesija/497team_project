@@ -19,6 +19,7 @@ namespace ToDoApp
     /// </summary>
     public partial class LoginWindow : UserControl
     {
+        private BoardManager boardManager;
 
         public LoginWindow()
         {
@@ -27,8 +28,15 @@ namespace ToDoApp
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
+            /*
+             *call constructor for board manager passing in 
+             *if doesn't exisit yet it will create a new file
+             *not doing this is version 2
+             */
+            boardManager = new BoardManager(userInput.Text, passwordInput.GetValue().ToString());
+
             //transfer holder to next view
-            Content = new BoardWindow();
+            Content = new BoardWindow(boardManager);
 
         }
     }
