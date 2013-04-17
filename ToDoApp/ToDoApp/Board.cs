@@ -37,6 +37,20 @@ namespace ToDoApp
             todoLists[2].SetName("Done");
         }
 
+        public void AddItem(Item i)
+        {
+            todoLists[0].AddItem(i);
+        }
+
+        public void EditItem(int listIndex, int itemIndex, Item i)
+        {
+            todoLists[listIndex].EditItemAt(itemIndex, i);
+        }
+
+        public void GetItemAt(int listIndex, int itemIndex)
+        {
+            todoLists[listIndex].GetItemAt(itemIndex);
+        }
         /*
         //Adds a list to todoLists
         public void AddList(ItemList l)
