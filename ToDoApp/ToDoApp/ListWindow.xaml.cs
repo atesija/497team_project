@@ -61,6 +61,7 @@ namespace ToDoApp
             if (todoList.SelectedIndex >= 0)
             {
                 board.EditItem(0, todoList.SelectedIndex, item);
+                
             }
             else if (doingList.SelectedIndex >= 0)
             {
@@ -86,7 +87,18 @@ namespace ToDoApp
                 ListView listView = sender as ListView;
                 listView.Items.Add(item);
                 draggedList.Items.Remove(draggedList.SelectedItem);
-                
+                int to = 0;
+                int from = 0;
+                if (draggedList == doingList)
+                    from = 1;
+                else if (draggedList == doneList)
+                    from = 2;
+                if (listView == doingList)
+                    to = 1;
+                else if (listView == doingList)
+                    to = 2;
+
+                board.MoveItem(from, listView.Items.Count - 1, to);
             }
         }
 
