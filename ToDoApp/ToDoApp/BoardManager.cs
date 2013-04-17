@@ -33,5 +33,37 @@ namespace ToDoApp
         {
             StreamReader file = new StreamReader(fileName + ".txt");
         }
+
+        //Returns a board from the selected location
+        public Board GetBoardAt(int at)
+        {
+            return boards[at];
+        }
+
+        //Adds a board
+        public void AddBoard(Board b)
+        {
+            boards.Add(b);
+        }
+
+        public void EditBoardAt(int at, Board b)
+        {
+            boards[at] = b;
+        }
+
+        public void EditBoardAt(int at, string name)
+        {
+            boards[at].SetName(name);
+        }
+
+        public void DeleteBoardAt(int at)
+        {
+            boards.RemoveAt(at);
+        }
+
+        public Board GetBoardAt(int at)
+        {
+            return boards[at];
+        }
     }
 }
