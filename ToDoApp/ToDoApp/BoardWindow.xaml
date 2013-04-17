@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Height="300" Width="475
              ">
-    <Grid>
+   <Grid>
+      <Label Content="Boards" FontWeight="Bold" FontSize="15" Height="29" HorizontalAlignment="Left" Margin="10,10,0,0" Name="boardLabel" VerticalAlignment="Top" Width="124" />
       <Button Content="Logout" Height="23" HorizontalAlignment="Right" Margin="0,10,10,0" Name="logout" VerticalAlignment="Top" Width="130" Click="logout_Click" />
       <ListBox Height="210" HorizontalAlignment="Center" Margin="10,43,10,10" Name="listBox" VerticalAlignment="Top" Width="453" SelectionChanged="listBox1_SelectionChanged" />
         <Button Content="Add New Board" Height="23" HorizontalAlignment="Left" Margin="10,265,0,0" Name="add" VerticalAlignment="Top" Width="130" Click="add_Click" />

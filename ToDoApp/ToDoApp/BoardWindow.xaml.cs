@@ -52,8 +52,6 @@ namespace ToDoApp
         {
            AddBoardDialog addDialog = new AddBoardDialog(boardManager, listBox);
            addDialog.ShowDialog();
-
-           
         }
 
         private void open_Click(object sender, RoutedEventArgs e)
