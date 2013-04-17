@@ -20,6 +20,7 @@ namespace ToDoApp
         public BoardManager(string username, string password)
         {
             fileName = username + password;
+            boards = new List<Board>();
         }
 
         //Opens a file and saves the entire tree (Board, List, Item) to the file
