@@ -30,10 +30,24 @@ namespace ToDoApp
 
         public ListWindow(BoardManager boardManager_, Board board_)
         {
+            InitializeComponent();
+
             boardManager = boardManager_;
             board = board_;
-            
-            InitializeComponent();
+
+            loadData(todoList, 0);
+            loadData(doingList, 1);
+            loadData(doneList, 2);
+
+            boardLabel.Content = board.GetName();
+        }
+
+        private void loadData(ListView list, int listNum)
+        {
+            for (int i = 0; i < board.GetSize(listNum); i++)
+            {
+                list.Items.Add(board.GetItemAt(listNum, i).GetName());
+            }
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
@@ -44,11 +58,22 @@ namespace ToDoApp
             //TODO: Create dialog box that returns a string or Item
             Item item = new Item("todo", "blerg", 1);
 
-            //Add item to the board
-            board.AddItem(item);
+            //try catch should be in dialog box but leaving it here for now
+            try
+            {
+                //Add item to the board
+                board.AddItem(item);
 
-            //Add returned board to the list widget
-            todoList.Items.Add(item.GetName());
+                //Add returned board to the list widget
+                todoList.Items.Add(item.GetName());
+            }
+            catch (ToDoException exception)
+            {
+                MessageBox.Show(exception.getMessage(), "Add Item",
+                   MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
+
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
@@ -56,29 +81,63 @@ namespace ToDoApp
             //open dialog box that returns strings or item
             Item item = new Item("updated", "blerrrrrg", 2);
 
-            ListView curList;
+            //try catch should be in diaglog box but leaving it here
+
+            ListView curList = null;
             //eddit currently selected item
             if (todoList.SelectedIndex >= 0)
             {
-                board.EditItem(0, todoList.SelectedIndex, item);
-                curList = todoList;
-                
+                try
+                {
+                    //Add item to the board
+                    board.EditItem(0, todoList.SelectedIndex, item);
+                    curList = todoList;
+                }
+                catch (ToDoException exception)
+                {
+                    MessageBox.Show(exception.getMessage(), "Edit Item",
+                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                               
             }
             else if (doingList.SelectedIndex >= 0)
             {
-                board.EditItem(1, doingList.SelectedIndex, item);
-                curList = doingList;
+                try
+                {
+                    //Add item to the board
+                    board.EditItem(1, doingList.SelectedIndex, item);
+                    curList = todoList;
+                }
+                catch (ToDoException exception)
+                {
+                    MessageBox.Show(exception.getMessage(), "Edit Item",
+                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }                
+                
             }
-            else
+            else if(doneList.SelectedIndex >= 0)
             {
-                board.EditItem(2, doneList.SelectedIndex, item);
-                curList = doneList;
+                try
+                {
+                    //Add item to the board
+                    board.EditItem(2, doneList.SelectedIndex, item);
+                    curList = todoList;
+                }
+                catch (ToDoException exception)
+                {
+                    MessageBox.Show(exception.getMessage(), "Edit Item",
+                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                } 
             }
-            int curSelected = curList.SelectedIndex;
-            curList.Items.RemoveAt(curSelected);
-            curList.Items.Insert(curSelected, item.GetName());
-            curList.SelectedIndex = curSelected;
 
+
+            if (curList != null)
+            {
+                int curSelected = curList.SelectedIndex;
+                curList.Items.RemoveAt(curSelected);
+                curList.Items.Insert(curSelected, item.GetName());
+                curList.SelectedIndex = curSelected;
+            }
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
@@ -94,7 +153,7 @@ namespace ToDoApp
                 board.DeleteItemAt(1, doingList.SelectedIndex);
                 doingList.Items.RemoveAt(todoList.SelectedIndex);
             }
-            else
+            else if (doneList.SelectedIndex >= 0)
             {
                 board.DeleteItemAt(2, doneList.SelectedIndex);
                 doneList.Items.RemoveAt(todoList.SelectedIndex);
@@ -102,84 +161,9 @@ namespace ToDoApp
 
         }
 
-        private void listDrop(object sender, DragEventArgs e)
+        private void backButton_Click(object sender, RoutedEventArgs e)
         {
-            if (e.Data.GetDataPresent("itemFormat"))
-            {
-                String item = e.Data.GetData("itemFormat") as String;
-                ListView listView = sender as ListView;
-                listView.Items.Add(item);
-                draggedList.Items.Remove(draggedList.SelectedItem);
-                int to = 0;
-                int from = 0;
-                if (draggedList == doingList)
-                    from = 1;
-                else if (draggedList == doneList)
-                    from = 2;
-                if (listView == doingList)
-                    to = 1;
-                else if (listView == doingList)
-                    to = 2;
-
-                board.MoveItem(from, listView.Items.Count - 1, to);
-            }
-        }
-
-        private void listDragEnter(object sender, DragEventArgs e)
-        {
-            if (!e.Data.GetDataPresent("itemFormat") ||
-                sender == e.Source)
-            {
-                e.Effects = DragDropEffects.None;
-            }
-        }
-
-        private void listMouseMove(object sender, MouseEventArgs e)
-        {
-            Point mousePos = e.GetPosition(null);
-            Vector diff = startPoint - mousePos;
-
-            if (e.LeftButton == MouseButtonState.Pressed &&
-                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
-                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
-            {
-                ListView listView = sender as ListView;
-                ListViewItem listViewItem = FindAnsestor((DependencyObject)e.OriginalSource);
-
-                if (listViewItem != null)
-                {
-                    draggedList = listView;
-
-                    String item = (String)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
-
-                    DataObject dragData = new DataObject("itemFormat", item);
-                    DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
-
-                    
-                    //listView.Items.Remove(listView.SelectedItem);
-
-                }
-            }
-        }
-
-        private void listPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            startPoint = e.GetPosition(null) ;
-        }
-
-        private ListViewItem FindAnsestor(DependencyObject current)
-        {
-            do
-            {
-                if (current is ListViewItem)
-                {
-                    return (ListViewItem)current;
-                }
-                current = VisualTreeHelper.GetParent(current);
-            }
-            while (current != null);
-            return null;
-
+            Content = new BoardWindow(boardManager);
         }
 
         private void listSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -207,7 +191,90 @@ namespace ToDoApp
             {
                 int forsel = curList.Items.IndexOf(selected);
                 curList.SelectedIndex = forsel;
-            }            
+            }
+        }
+
+        private void listPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            startPoint = e.GetPosition(null);
+        }
+
+        private void listMouseMove(object sender, MouseEventArgs e)
+        {
+            Point mousePos = e.GetPosition(null);
+            Vector diff = startPoint - mousePos;
+
+            if (e.LeftButton == MouseButtonState.Pressed &&
+                (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
+            {
+                ListView listView = sender as ListView;
+                ListViewItem listViewItem = FindAnsestor((DependencyObject)e.OriginalSource);
+
+                if (listViewItem != null)
+                {
+                    draggedList = listView;
+
+                    String item = (String)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
+
+                    DataObject dragData = new DataObject("itemFormat", item);
+                    DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+
+
+                    //listView.Items.Remove(listView.SelectedItem);
+
+                }
+            }
+        }
+
+        private void listDragEnter(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent("itemFormat") ||
+                sender == e.Source)
+            {
+                e.Effects = DragDropEffects.None;
+            }
+        }
+
+        private void listDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent("itemFormat"))
+            {
+                String item = e.Data.GetData("itemFormat") as String;
+                ListView listView = sender as ListView;
+                listView.Items.Add(item);
+                int to = 0;
+                int from = 0;
+
+                if (draggedList == doingList)
+                    from = 1;
+                else if (draggedList == doneList)
+                    from = 2;
+
+                if (listView == doingList)
+                    to = 1;
+                else if (listView == doneList)
+                    to = 2;
+
+                board.MoveItem(from, draggedList.SelectedIndex, to);
+                
+                draggedList.Items.Remove(draggedList.SelectedItem);
+            }
+        }
+        
+        private ListViewItem FindAnsestor(DependencyObject current)
+        {
+            do
+            {
+                if (current is ListViewItem)
+                {
+                    return (ListViewItem)current;
+                }
+                current = VisualTreeHelper.GetParent(current);
+            }
+            while (current != null);
+            return null;
+
         }
 
       

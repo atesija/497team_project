@@ -30,6 +30,11 @@ namespace ToDoApp
             this.SetName(name);
         }
 
+        public int GetSize(int list)
+        {
+            return todoLists[list].GetSize();
+        }
+
         private void SetNames()
         {
             todoLists[0].SetName("To Do");
@@ -39,6 +44,11 @@ namespace ToDoApp
 
         public void AddItem(Item i)
         {
+            for (int j = 0; j < NUM_LISTS; j++)
+            {
+                if (todoLists[j].Exists(i.GetName()))
+                    throw new ToDoException("An item with this name already exists");
+            }
             todoLists[0].AddItem(i);
         }
 
@@ -50,12 +60,17 @@ namespace ToDoApp
 
         public void EditItem(int listIndex, int itemIndex, Item i)
         {
+            for (int j = 0; j < NUM_LISTS; j++)
+            {
+                if (todoLists[j].Exists(i.GetName()))
+                    throw new ToDoException("An item with this name already exists");
+            }
             todoLists[listIndex].EditItemAt(itemIndex, i);
         }
 
-        public void GetItemAt(int listIndex, int itemIndex)
+        public Item GetItemAt(int listIndex, int itemIndex)
         {
-            todoLists[listIndex].GetItemAt(itemIndex);
+            return todoLists[listIndex].GetItemAt(itemIndex);
         }
 
         public void DeleteItemAt(int listIndex, int itemIndex)

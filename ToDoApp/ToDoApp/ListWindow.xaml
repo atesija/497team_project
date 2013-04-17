@@ -4,30 +4,34 @@
         Height="300" Width="475">
     
     <Grid>
-        <Rectangle Height="258" Fill="LightGray" HorizontalAlignment="Left" Margin="0,4,0,0" Name="todoRec" Stroke="Black" VerticalAlignment="Top" Width="155" />
-        <Rectangle Fill="LightGray" Height="258" HorizontalAlignment="Left" Margin="159.5,4,0,0" Name="doingRec" Stroke="Black" VerticalAlignment="Top" Width="155" />
-        <Rectangle Fill="LightGray" Height="258" HorizontalAlignment="Left" Margin="319,4,0,0" Name="doneRec" Stroke="Black" VerticalAlignment="Top" Width="155" />
+        <Rectangle Height="235" Fill="LightGray" HorizontalAlignment="Left" Margin="0,32,0,0" Name="todoRec" Stroke="Black" VerticalAlignment="Top" Width="155" />
+        <Rectangle Fill="LightGray" Height="235" HorizontalAlignment="Left" Margin="159.5,32,0,0" Name="doingRec" Stroke="Black" VerticalAlignment="Top" Width="155" />
+        <Rectangle Fill="LightGray" Height="235" HorizontalAlignment="Left" Margin="319,32,0,0" Name="doneRec" Stroke="Black" VerticalAlignment="Top" Width="155" />
 
-        <ListView Height="233" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
+        <ListView Height="202" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
                   DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
                   SelectionChanged="listSelectionChanged" SelectionMode="Single"
-                  HorizontalAlignment="Left" Margin="5,23,0,0" Name="todoList" VerticalAlignment="Top" Width="144" />
-        <ListView Height="233" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
+                  HorizontalAlignment="Left" Margin="5,59,0,0" Name="todoList" VerticalAlignment="Top" Width="144" />
+        <ListView Height="202" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
                   DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
                   SelectionChanged="listSelectionChanged" SelectionMode="Single"
-                  HorizontalAlignment="Left" Margin="165.5,23,0,0" Name="doingList" VerticalAlignment="Top" Width="144" />
-        <ListView Height="233" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
+                  HorizontalAlignment="Left" Margin="165.5,59,0,0" Name="doingList" VerticalAlignment="Top" Width="144" />
+        <ListView Height="202" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
                   DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
                   SelectionChanged="listSelectionChanged" SelectionMode="Single"
-                  HorizontalAlignment="Left" Margin="325,23,0,0" Name="doneList" VerticalAlignment="Top" Width="144" />
+                  HorizontalAlignment="Left" Margin="325,59,0,0" Name="doneList" VerticalAlignment="Top" Width="144" />
 
-        <Label Content="To Do" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="5,0,0,0" Name="todoLabel" VerticalAlignment="Top" Width="81" />
-        <Label Content="Doing" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="165.5,0,0,0" Name="doingLabel" VerticalAlignment="Top" Width="81" />
-        <Label Content="Done"  FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="326,0,0,0" Name="doneLabel" VerticalAlignment="Top" Width="81" />
+        <Label Content="To Do" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="5,32,0,0" Name="todoLabel" VerticalAlignment="Top" Width="81" />
+        <Label Content="Doing" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="166,32,0,0" Name="doingLabel" VerticalAlignment="Top" Width="81" />
+        <Label Content="Done"  FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="325,32,0,0" Name="doneLabel" VerticalAlignment="Top" Width="81" />
 
-        <Button Content="Add Item" Height="23" HorizontalAlignment="Left" Margin="5,271,0,0" Name="add" VerticalAlignment="Top" Width="90" Click="add_Click" />
-        <Button Content="Edit Item" Height="23" HorizontalAlignment="Right" Margin="0,271,284,0" Name="edit" VerticalAlignment="Top" Width="90" Click="edit_Click" />
-        <Button Content="Delete Item" Height="23" HorizontalAlignment="Left" Margin="379,271,0,0" Name="delete" VerticalAlignment="Top" Width="90
+        <Button Content="Add Item" Height="23" HorizontalAlignment="Left" Margin="5,274,0,0" Name="add" VerticalAlignment="Top" Width="90" Click="add_Click" />
+        <Button Content="Edit Item" Height="23" HorizontalAlignment="Right" Margin="0,274,284,0" Name="edit" VerticalAlignment="Top" Width="90" Click="edit_Click" />
+        <Button Content="Delete Item" Height="23" HorizontalAlignment="Left" Margin="379,273,0,0" Name="delete" VerticalAlignment="Top" Width="90
                 " Click="delete_Click" />
+        
+        <Button Content="Back" Height="23" HorizontalAlignment="Left" Margin="409,5,0,0" Name="backButton" VerticalAlignment="Top" Width="57"
+                Click="backButton_Click"/>
+        <Label Content="Lists" FontWeight="Bold" FontSize="15" Height="29" HorizontalAlignment="Left" Margin="1,2,0,0" Name="boardLabel" VerticalAlignment="Top" Width="124" />
     </Grid>
 </UserControl>

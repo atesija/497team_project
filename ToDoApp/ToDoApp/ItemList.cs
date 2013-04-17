@@ -23,6 +23,16 @@ namespace ToDoApp
             this.SetName(name);
         }
 
+        public int GetSize()
+        {
+            return items.Count;
+        }
+
+        public bool Exists(string name)
+        {
+            return items.Exists(c => c.GetName() == name);
+        }
+
         //Adds an item to the todo list
         public void AddItem(Item i)
         {

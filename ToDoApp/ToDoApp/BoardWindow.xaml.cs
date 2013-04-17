@@ -22,9 +22,16 @@ namespace ToDoApp
 
         public BoardWindow(BoardManager boardManager_)
         {
-            boardManager = boardManager_;
 
             InitializeComponent();
+
+            boardManager = boardManager_;
+
+            for (int i = 0; i < boardManager.GetSize(); i++)
+            {
+                listBox.Items.Add(boardManager.GetBoardAt(i).GetName());
+            }
+
         }
 
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -45,6 +52,8 @@ namespace ToDoApp
         {
            AddBoardDialog addDialog = new AddBoardDialog(boardManager, listBox);
            addDialog.ShowDialog();
+
+           
         }
 
         private void open_Click(object sender, RoutedEventArgs e)

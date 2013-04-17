@@ -23,6 +23,11 @@ namespace ToDoApp
             boards = new List<Board>();
         }
 
+        public int GetSize()
+        {
+            return boards.Count;
+        }
+
         //Opens a file and saves the entire tree (Board, List, Item) to the file
         public void SaveToFile()
         {
