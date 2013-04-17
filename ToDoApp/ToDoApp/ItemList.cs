@@ -7,7 +7,7 @@ using System.IO;
 namespace ToDoApp
 {
     //Holds a bunch of items
-    class ItemList : Base
+    public class ItemList : Base
     {
         //The list of items
         List<Item> items;

@@ -6,7 +6,7 @@ using System.IO;
 
 namespace ToDoApp
 {
-    class BoardManager
+    public class BoardManager
     {
         List<Board> boards;
 

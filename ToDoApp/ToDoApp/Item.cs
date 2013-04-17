@@ -7,7 +7,7 @@ using System.IO;
 namespace ToDoApp
 {
     //A single item in a todo list
-    class Item : Base
+    public class Item : Base
     {
         //Details (if any) about the item in the list
         string details;
