@@ -42,6 +42,12 @@ namespace ToDoApp
             todoLists[0].AddItem(i);
         }
 
+        public void MoveItem(int fromList, int fromItem, int toList)
+        {
+            Item i = todoLists[fromList].TakeItemAt(fromItem);
+            todoLists[toList].AddItem(i);
+        }
+
         public void EditItem(int listIndex, int itemIndex, Item i)
         {
             todoLists[listIndex].EditItemAt(itemIndex, i);
@@ -51,39 +57,11 @@ namespace ToDoApp
         {
             todoLists[listIndex].GetItemAt(itemIndex);
         }
-        /*
-        //Adds a list to todoLists
-        public void AddList(ItemList l)
-        {
-            todoLists.Add(l);
-        }
 
-        //Adds a list at the given index
-        public void AddListAt(ItemList l, int at)
+        public void DeleteItemAt(int listIndex, int itemIndex)
         {
-            todoLists.Insert(at, l);
+            todoLists[listIndex].DeleteItemAt(itemIndex);
         }
-
-        //Changes the name of the list at location
-        public void EditListAt(int at, string name)
-        {
-            todoLists[at].SetName(name);
-        }
-
-        //Gets a reference to the item at the location
-        public ItemList GetListAt(int at)
-        {
-            return todoLists[at];
-        }
-
-        //Removes the item at the location and returns it
-        public ItemList TakeListAt(int at)
-        {
-            ItemList l = todoLists[at];
-            todoLists.RemoveAt(at);
-            return l;
-        }
-        */
 
         public override void SaveToFile(StreamWriter file)
         {

@@ -19,7 +19,7 @@ namespace ToDoApp
 
         public BoardManager(string username, string password)
         {
-            fileName = username + password;
+            fileName = username.GetHashCode().ToString() + password.GetHashCode().ToString();
             boards = new List<Board>();
         }
 
@@ -44,6 +44,8 @@ namespace ToDoApp
         //Adds a board
         public void AddBoard(Board b)
         {
+            if (boards.Exists(c => c.GetName() == b.GetName()))
+                throw new Exception("A board with this name already exists");
             boards.Add(b);
         }
 

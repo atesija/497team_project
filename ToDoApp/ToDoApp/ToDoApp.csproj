@@ -113,6 +113,7 @@
     <Compile Include="BoardWindow.xaml.cs">
       <DependentUpon>BoardWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ToDoException.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemList.cs" />
     <Compile Include="ItemModalWindow.xaml.cs">
