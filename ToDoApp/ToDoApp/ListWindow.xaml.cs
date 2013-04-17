@@ -52,11 +52,12 @@ namespace ToDoApp
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-           // ItemModalWindow addItem = new ItemModalWindow();
-           // addItem.ShowDialog();
 
             //TODO: Create dialog box that returns a string or Item
             Item item = new Item("todo", "blerg", 1);
+
+            ItemModalWindow addItem = new ItemModalWindow(item);
+            addItem.ShowDialog();
 
             //try catch should be in dialog box but leaving it here for now
             try

@@ -18,12 +18,38 @@ namespace ToDoApp
     /// </summary>
     public partial class ItemModalWindow : Window
     {
+        private Item item;
         public ItemModalWindow()
         {
             InitializeComponent();
         }
 
+        public ItemModalWindow(Item item_)
+        {
+            InitializeComponent();
+            for(int i=1; i<6; ++i)
+            {
+                ratingBox.Items.Add(i);
+            }
+            item = item_;
+            initializeWindow();
+        }
+
+        private void initializeWindow()
+        {
+            itemNameBox.Text = item.GetName();
+            itemDescriptionBox.Text = item.GetDetails();
+            ratingBox.SelectedValue = item.GetRank();
+        }
+
         private void add_Click(object sender, RoutedEventArgs e)
+        {
+            item.SetName(itemNameBox.Text);
+            item.SetDetails(itemDescriptionBox.Text);
+            item.SetRank((int)ratingBox.SelectedItem);
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
