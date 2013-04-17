@@ -32,6 +32,11 @@ namespace ToDoApp
 
         }
 
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void add_Click(object sender, RoutedEventArgs e)
         {
             //TODO: Create dialog box that returns a string or board
