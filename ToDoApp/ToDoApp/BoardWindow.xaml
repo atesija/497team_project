@@ -4,7 +4,8 @@
         Height="300" Width="475
              ">
     <Grid>
-        <ListBox Height="245" HorizontalAlignment="Left" Margin="43,8,0,0" Name="listbox" VerticalAlignment="Top" Width="390" SelectionChanged="listBox1_SelectionChanged" />
+      <Button Content="Logout" Height="23" HorizontalAlignment="Right" Margin="0,10,0,0" Name="logout" VerticalAlignment="Top" Width="120" Click="logout_Click" />
+      <ListBox Height="210" HorizontalAlignment="Center" Margin="10,43,10,10" Name="listbox" VerticalAlignment="Top" Width="453" SelectionChanged="listBox1_SelectionChanged" />
         <Button Content="Add New List" Height="23" HorizontalAlignment="Left" Margin="10,265,0,0" Name="add" VerticalAlignment="Top" Width="120" Click="add_Click" />
         <Button Content="Open Selected List" Height="23" HorizontalAlignment="Left" Margin="140,265,0,0" Name="open" VerticalAlignment="Top" Width="120" Click="open_Click" />
         <Button Content="Delete Selected List" Height="23" HorizontalAlignment="Right" Margin="0,265,12,0" Name="delete" VerticalAlignment="Top" Width="120" Click="delete_Click" />
