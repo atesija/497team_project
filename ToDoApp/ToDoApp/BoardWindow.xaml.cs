@@ -34,9 +34,14 @@ namespace ToDoApp
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            //get text
+            //TODO: Create dialog box that returns a string or board
             Board board = new Board("ToDo");
+
+            //Add returned board to the boardmanager
             boardManager.AddBoard(board);
+
+            //Add returned board to the list widget
+            listbox.Items.Add(board.GetName());
         }
 
         private void open_Click(object sender, RoutedEventArgs e)
