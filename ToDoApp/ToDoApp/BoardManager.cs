@@ -60,10 +60,5 @@ namespace ToDoApp
         {
             boards.RemoveAt(at);
         }
-
-        public Board GetBoardAt(int at)
-        {
-            return boards[at];
-        }
     }
 }
