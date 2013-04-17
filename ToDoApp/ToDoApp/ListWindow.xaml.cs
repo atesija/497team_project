@@ -28,12 +28,11 @@ namespace ToDoApp
 
         private BoardManager boardManager;
 
-        private int selectedBoard;
-
         public ListWindow(BoardManager boardManager_, int index)
         {
             boardManager = boardManager_;
-            //board = current boardManager
+            board = boardManager.GetBoardAt(index);
+            
             InitializeComponent();
 
         }

@@ -25,8 +25,6 @@ namespace ToDoApp
             boardManager = boardManager_;
 
             InitializeComponent();
-            listbox.Items.Add("Groceries");//REMOVE 
-            listbox.Items.Add("Todo");//REMOVE
         }
 
         private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,14 +34,19 @@ namespace ToDoApp
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-            listbox.Items.Add("Another List");//REMOVE 
+            //get text
+            Board board = new Board("ToDo");
+            boardManager.AddBoard(board);
         }
 
         private void open_Click(object sender, RoutedEventArgs e)
         {
             //pass in currently selected board
             //passes the correct board from the board manager
-            Content = new ListWindow(boardManager, listbox.SelectedIndex);
+            if(listbox.SelectedIndex >= 0)
+                Content = new ListWindow(boardManager, listbox.SelectedIndex);
+            //else
+                //error message???
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
