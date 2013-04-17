@@ -54,7 +54,7 @@ namespace ToDoApp
         {
 
             //TODO: Create dialog box that returns a string or Item
-            Item item = new Item("todo", "blerg", 1);
+            Item item = new Item();
 
             ItemModalWindow addItem = new ItemModalWindow(item);
             addItem.ShowDialog();
@@ -72,6 +72,7 @@ namespace ToDoApp
             {
                 MessageBox.Show(exception.getMessage(), "Add Item",
                    MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                add_Click(sender, e);
             }
 
 

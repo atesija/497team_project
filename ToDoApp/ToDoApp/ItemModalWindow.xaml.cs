@@ -47,6 +47,7 @@ namespace ToDoApp
             item.SetName(itemNameBox.Text);
             item.SetDetails(itemDescriptionBox.Text);
             item.SetRank((int)ratingBox.SelectedItem);
+            this.Close();
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
