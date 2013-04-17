@@ -28,13 +28,12 @@ namespace ToDoApp
 
         private BoardManager boardManager;
 
-        public ListWindow(BoardManager boardManager_, int index)
+        public ListWindow(BoardManager boardManager_, Board board_)
         {
             boardManager = boardManager_;
-            board = boardManager.GetBoardAt(index);
+            board = board_;
             
             InitializeComponent();
-
         }
 
         private void add_Click(object sender, RoutedEventArgs e)

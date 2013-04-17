@@ -49,15 +49,15 @@ namespace ToDoApp
             {
                //TODO: Create dialog box that returns a string or board
 
+
+               //Add returned board to the boardmanager
+               boardManager.AddBoard(board);
             }
             catch (ToDoException exception)
             {
-               MessageBox.Show(exception.getMessage(), "Add Board", MessageBoxButton.OK, MessageBoxImage.Error);
+               MessageBox.Show(exception.getMessage(), "Add Board", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                return;
             }
-
-            //Add returned board to the boardmanager
-            boardManager.AddBoard(board);
 
             //Add returned board to the list widget
             listbox.Items.Add(board.GetName());
@@ -65,12 +65,14 @@ namespace ToDoApp
 
         private void open_Click(object sender, RoutedEventArgs e)
         {
-            //pass in currently selected board
-            //passes the correct board from the board manager
-            if(listbox.SelectedIndex >= 0)
-                Content = new ListWindow(boardManager, listbox.SelectedIndex);
-            //else
-                //error message???
+           if (listbox.SelectedItem == null)
+           {
+              MessageBox.Show("Please select a Board", "Open Board", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+              return;
+           }
+
+           Board board = boardManager.GetBoardAt(listbox.SelectedIndex);
+           Content = new ListWindow(boardManager, board);
         }
 
         private void delete_Click(object sender, RoutedEventArgs e)
@@ -78,7 +80,7 @@ namespace ToDoApp
            // Check that an Item is selected
            if (listbox.SelectedItem == null)
            {
-              MessageBox.Show("Please select a Board to delete", "Delete Board", MessageBoxButton.OK, MessageBoxImage.Error);
+              MessageBox.Show("Please select a Board to delete", "Delete Board", MessageBoxButton.OK, MessageBoxImage.Exclamation);
               return;
            }
 
