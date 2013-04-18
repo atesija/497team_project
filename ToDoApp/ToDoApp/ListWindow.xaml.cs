@@ -62,7 +62,10 @@ namespace ToDoApp
             //try catch should be in dialog box but leaving it here for now
             try
             {
-                if (item.GetName() != string.Empty && item.GetDetails() != string.Empty)
+                if (item.GetName() == string.Empty && item.GetDetails() == string.Empty)
+                {
+                }
+                else
                 {
                     //Add item to the board
                     board.AddItem(item);
