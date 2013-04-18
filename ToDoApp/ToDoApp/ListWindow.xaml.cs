@@ -62,11 +62,14 @@ namespace ToDoApp
             //try catch should be in dialog box but leaving it here for now
             try
             {
-                //Add item to the board
-                board.AddItem(item);
+                if (item.GetName() != string.Empty && item.GetDetails() != string.Empty)
+                {
+                    //Add item to the board
+                    board.AddItem(item);
 
-                //Add returned board to the list widget
-                todoList.Items.Add(item.GetName());
+                    //Add returned board to the list widget
+                    todoList.Items.Add(item.GetName());
+                }
             }
             catch (ToDoException exception)
             {
