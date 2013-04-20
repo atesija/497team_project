@@ -85,6 +85,11 @@ namespace ToDoApp
             items.RemoveAt(at);
         }
 
+        public void sortItems()
+        {
+            items.Sort(new RankComparer());
+        }
+
         public override void SaveToFile(StreamWriter file)
         {
             foreach (Item i in items)
@@ -95,4 +100,18 @@ namespace ToDoApp
         {
         }
     }
+
+    public class RankComparer : IComparer<Item>
+    {
+        public int Compare(Item x, Item y)
+        {
+            if (x.GetRank() > y.GetRank())
+                return 1;
+            if (x.GetRank() < y.GetRank())
+                return -1;
+            else
+                return 0;
+        }
+    }
+
 }

@@ -92,6 +92,11 @@ namespace ToDoApp
             todoLists[listIndex].DeleteItemAt(itemIndex);
         }
 
+        public void sortList(int listIndex)
+        {
+            todoLists[listIndex].sortItems();
+        }
+
         public override void SaveToFile(StreamWriter file)
         {
             //TODO: save board to file

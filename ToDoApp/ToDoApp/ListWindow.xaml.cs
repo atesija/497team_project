@@ -87,6 +87,8 @@ namespace ToDoApp
                 add_Click(sender, e);
             }
 
+            sortList(todoList, 0);
+
 
         }
 
@@ -145,6 +147,7 @@ namespace ToDoApp
                 curList.Items.RemoveAt(curSelected);
                 curList.Items.Insert(curSelected, item.GetName());
                 curList.SelectedIndex = curSelected;
+                sortList(curList, listIndex);
             }
         }
 
@@ -199,6 +202,8 @@ namespace ToDoApp
                 curList.Items.RemoveAt(curSelected);
                 curList.Items.Insert(curSelected, item.GetName());
                 curList.SelectedIndex = curSelected;
+
+                sortList(curList, listIndex);
             }
         }
 
@@ -226,6 +231,18 @@ namespace ToDoApp
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Content = new BoardWindow(boardManager);
+        }
+
+        private void sortList(ListView listToSort, int listIndex)
+        {
+            listToSort.Items.Clear();
+
+            board.sortList(listIndex);
+
+            for (int i = 0; i < board.GetSize(listIndex); i++)
+            {
+                listToSort.Items.Add(board.GetItemAt(listIndex, i).GetName());
+            }
         }
 
         private void listSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -271,7 +288,7 @@ namespace ToDoApp
                 Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
             {
                 draggedList = sender as ListView;
-
+                
                 if (draggedList.SelectedIndex >= 0)
                 {
                     String item = draggedList.SelectedItems[0].ToString();
@@ -303,28 +320,31 @@ namespace ToDoApp
             {
                 String item = e.Data.GetData("itemFormat") as String;
                 ListView listView = sender as ListView;
-                listView.Items.Add(item);
-                int to = -1;
-                int from = -1;
-
-                if (draggedList == todoList)
-                    from = 0;
-                else if(draggedList == doingList)
-                    from = 1;
-                else if (draggedList == doneList)
-                    from = 2;
-
-                if (listView == todoList)
-                    to = 0;
-                else if (listView == doingList)
-                    to = 1;
-                else if (listView == doneList)
-                    to = 2;
-
-                if (to >= 0 && from >= 0 && draggedList.SelectedIndex >= 0)
+                if (listView != draggedList)
                 {
-                    board.MoveItem(from, draggedList.SelectedIndex, to);
-                    draggedList.Items.Remove(draggedList.SelectedItem);
+                    listView.Items.Add(item);
+                    int to = -1;
+                    int from = -1;
+
+                    if (draggedList == todoList)
+                        from = 0;
+                    else if (draggedList == doingList)
+                        from = 1;
+                    else if (draggedList == doneList)
+                        from = 2;
+
+                    if (listView == todoList)
+                        to = 0;
+                    else if (listView == doingList)
+                        to = 1;
+                    else if (listView == doneList)
+                        to = 2;
+
+                    if (to >= 0 && from >= 0 && draggedList.SelectedIndex >= 0)
+                    {
+                        board.MoveItem(from, draggedList.SelectedIndex, to);
+                        draggedList.Items.Remove(draggedList.SelectedItem);
+                    }
                 }
             }
         }
