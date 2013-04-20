@@ -33,6 +33,21 @@ namespace ToDoApp
             return items.Exists(c => c.GetName() == name);
         }
 
+        public bool ExistsLoop(int index, string name)
+        {
+            for (int i = 0; i < GetSize(); i++)
+            {
+                if (i != index)
+                {
+                    Item c = GetItemAt(i);
+                    if (name == c.GetName())
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
         //Adds an item to the todo list
         public void AddItem(Item i)
         {

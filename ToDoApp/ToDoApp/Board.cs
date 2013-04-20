@@ -54,16 +54,30 @@ namespace ToDoApp
 
         public void MoveItem(int fromList, int fromItem, int toList)
         {
-            Item i = todoLists[fromList].TakeItemAt(fromItem);
-            todoLists[toList].AddItem(i);
+            if (fromList >= 0 && fromList < todoLists.Length && toList >= 0 && toList < todoLists.Length)
+            {
+                if (fromItem >= 0 && fromItem < todoLists[fromList].GetSize())
+                {
+                    Item i = todoLists[fromList].TakeItemAt(fromItem);
+                    todoLists[toList].AddItem(i);
+                }
+            }
         }
 
         public void EditItem(int listIndex, int itemIndex, Item i)
         {
             for (int j = 0; j < NUM_LISTS; j++)
             {
-                if (todoLists[j].Exists(i.GetName()))
-                    throw new ToDoException("An item with this name already exists");
+                if (j != listIndex)
+                {
+                    if (todoLists[j].Exists(i.GetName()))
+                        throw new ToDoException("An item with this name already exists");
+                }
+                else
+                {
+                    if (todoLists[j].ExistsLoop(itemIndex, i.GetName()))
+                        throw new ToDoException("An item with this name already exists");
+                }
             }
             todoLists[listIndex].EditItemAt(itemIndex, i);
         }

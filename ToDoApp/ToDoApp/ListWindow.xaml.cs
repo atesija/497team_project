@@ -120,14 +120,32 @@ namespace ToDoApp
                 listIndex = 2;
             }
 
-            Item item = new Item();
-            int curSelected = curList.SelectedIndex;
-            item = board.GetItemAt(listIndex, curSelected);
-            ItemModalWindow addItem = new ItemModalWindow(item);
-            addItem.ShowDialog();
-            curList.Items.RemoveAt(curSelected);
-            curList.Items.Insert(curSelected, item.GetName());
-            curList.SelectedIndex = curSelected;
+            if (listIndex >= 0)
+            {
+
+                Item item = new Item();
+                int curSelected = curList.SelectedIndex;
+                item = board.GetItemAt(listIndex, curSelected);
+                Item newItem = new Item(item.GetName(), item.GetDetails(), item.GetRank());
+
+                ItemModalWindow addItem = new ItemModalWindow(newItem);
+                addItem.ShowDialog();
+
+                try
+                {
+                    board.EditItem(listIndex, curSelected, newItem);
+                }
+                catch (ToDoException exception)
+                {
+                    MessageBox.Show(exception.getMessage(), "Edit Item",
+                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    editDoubleClick(sender, e);
+                } 
+
+                curList.Items.RemoveAt(curSelected);
+                curList.Items.Insert(curSelected, item.GetName());
+                curList.SelectedIndex = curSelected;
+            }
         }
 
         private void edit_Click(object sender, RoutedEventArgs e)
@@ -142,47 +160,21 @@ namespace ToDoApp
             //eddit currently selected item
             if (todoList.SelectedIndex >= 0)
             {
-                try
-                {
-                    //Add item to the board
-                    curList = todoList;
-                    listIndex = 0;
-                }
-                catch (ToDoException exception)
-                {
-                    MessageBox.Show(exception.getMessage(), "Edit Item",
-                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                }
-                               
+                //Add item to the board
+                curList = todoList;
+                listIndex = 0;                               
             }
             else if (doingList.SelectedIndex >= 0)
             {
-                try
-                {
-                    //Add item to the board
-                    curList = doingList;
-                    listIndex = 1;
-                }
-                catch (ToDoException exception)
-                {
-                    MessageBox.Show(exception.getMessage(), "Edit Item",
-                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                }                
-                
+                //Add item to the board
+                curList = doingList;
+                listIndex = 1;
             }
-            else if(doneList.SelectedIndex >= 0)
+            else if (doneList.SelectedIndex >= 0)
             {
-                try
-                {
-                    //Add item to the board
-                    curList = doneList;
-                    listIndex = 2;
-                }
-                catch (ToDoException exception)
-                {
-                    MessageBox.Show(exception.getMessage(), "Edit Item",
-                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                } 
+                //Add item to the board
+                curList = doneList;
+                listIndex = 2;
             }
 
 
@@ -190,8 +182,20 @@ namespace ToDoApp
             {
                 int curSelected = curList.SelectedIndex;
                 item = board.GetItemAt(listIndex, curSelected);
-                ItemModalWindow addItem = new ItemModalWindow(item);
+                Item newItem = new Item(item.GetName(), item.GetDetails(), item.GetRank());
+                ItemModalWindow addItem = new ItemModalWindow(newItem);
                 addItem.ShowDialog();
+
+                try
+                {
+                    board.EditItem(listIndex, curSelected, newItem);
+                }
+                catch (ToDoException exception)
+                {
+                    MessageBox.Show(exception.getMessage(), "Edit Item",
+                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    edit_Click(sender, e);
+                } 
                 curList.Items.RemoveAt(curSelected);
                 curList.Items.Insert(curSelected, item.GetName());
                 curList.SelectedIndex = curSelected;
@@ -266,22 +270,21 @@ namespace ToDoApp
                 (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
                 Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
             {
-                ListView listView = sender as ListView;
-                ListViewItem listViewItem = FindAnsestor((DependencyObject)e.OriginalSource);
+                draggedList = sender as ListView;
 
-                if (listViewItem != null)
+                if (draggedList.SelectedIndex >= 0)
                 {
-                    draggedList = listView;
+                    String item = draggedList.SelectedItems[0].ToString();
 
-                    String item = (String)listView.ItemContainerGenerator.ItemFromContainer(listViewItem);
-
-                    DataObject dragData = new DataObject("itemFormat", item);
-                    DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
-
-
-                    //listView.Items.Remove(listView.SelectedItem);
-
+                    ListViewItem listViewItem = FindAnsestor((DependencyObject)e.OriginalSource);
+                    if (listViewItem != null)
+                    {
+                        DataObject dragData = new DataObject("itemFormat", item);
+                        DragDrop.DoDragDrop(listViewItem, dragData, DragDropEffects.Move);
+                    }
                 }
+
+
             }
         }
 
@@ -301,22 +304,28 @@ namespace ToDoApp
                 String item = e.Data.GetData("itemFormat") as String;
                 ListView listView = sender as ListView;
                 listView.Items.Add(item);
-                int to = 0;
-                int from = 0;
+                int to = -1;
+                int from = -1;
 
-                if (draggedList == doingList)
+                if (draggedList == todoList)
+                    from = 0;
+                else if(draggedList == doingList)
                     from = 1;
                 else if (draggedList == doneList)
                     from = 2;
 
-                if (listView == doingList)
+                if (listView == todoList)
+                    to = 0;
+                else if (listView == doingList)
                     to = 1;
                 else if (listView == doneList)
                     to = 2;
 
-                board.MoveItem(from, draggedList.SelectedIndex, to);
-                
-                draggedList.Items.Remove(draggedList.SelectedItem);
+                if (to >= 0 && from >= 0 && draggedList.SelectedIndex >= 0)
+                {
+                    board.MoveItem(from, draggedList.SelectedIndex, to);
+                    draggedList.Items.Remove(draggedList.SelectedItem);
+                }
             }
         }
         
