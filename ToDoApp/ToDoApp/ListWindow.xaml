@@ -9,15 +9,15 @@
         <Rectangle Fill="LightGray" Height="235" HorizontalAlignment="Left" Margin="319,32,0,0" Name="doneRec" Stroke="Black" VerticalAlignment="Top" Width="155" />
 
         <ListView Height="202" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
-                  DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
+                  DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" MouseDoubleClick="editDoubleClick"
                   SelectionChanged="listSelectionChanged" SelectionMode="Single"
                   HorizontalAlignment="Left" Margin="5,59,0,0" Name="todoList" VerticalAlignment="Top" Width="144" />
         <ListView Height="202" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
-                  DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
+                  DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" MouseDoubleClick="editDoubleClick"
                   SelectionChanged="listSelectionChanged" SelectionMode="Single"
                   HorizontalAlignment="Left" Margin="165.5,59,0,0" Name="doingList" VerticalAlignment="Top" Width="144" />
         <ListView Height="202" MouseMove="listMouseMove" PreviewMouseLeftButtonDown="listPreviewMouseLeftButtonDown" 
-                  DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" 
+                  DragEnter="listDragEnter" Drop="listDrop" AllowDrop="True" MouseDoubleClick="editDoubleClick"
                   SelectionChanged="listSelectionChanged" SelectionMode="Single"
                   HorizontalAlignment="Left" Margin="325,59,0,0" Name="doneList" VerticalAlignment="Top" Width="144" />
 

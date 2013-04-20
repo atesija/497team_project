@@ -84,6 +84,35 @@ namespace ToDoApp
 
         }
 
+        private void editDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            ListView curList = (ListView)sender;
+            if (curList == null || !curList.HasItems || curList.SelectedIndex == -1)
+                return;
+            int listIndex = -1;
+            if (curList.Name == "todoList")
+            {
+                listIndex = 0;
+            }
+            else if (curList.Name == "doingList")
+            {
+                listIndex = 1;
+            }
+            else if (curList.Name == "doneList")
+            {
+                listIndex = 2;
+            }
+
+            Item item = new Item();
+            int curSelected = curList.SelectedIndex;
+            item = board.GetItemAt(listIndex, curSelected);
+            ItemModalWindow addItem = new ItemModalWindow(item);
+            addItem.ShowDialog();
+            curList.Items.RemoveAt(curSelected);
+            curList.Items.Insert(curSelected, item.GetName());
+            curList.SelectedIndex = curSelected;
+        }
+
         private void edit_Click(object sender, RoutedEventArgs e)
         {
             //open dialog box that returns strings or item
@@ -286,6 +315,11 @@ namespace ToDoApp
             }
             while (current != null);
             return null;
+
+        }
+
+        private void editDoubleClick()
+        {
 
         }
 
