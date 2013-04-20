@@ -34,10 +34,16 @@ namespace ToDoApp
 
         private void openBoard(object sender, MouseButtonEventArgs e)
         {
-           if (listBox.SelectedItem == null)
+           // Checks whether a ListBox Item was double-clicked
+           DependencyObject dependencyObject = (DependencyObject) e.OriginalSource;
+
+           while ((dependencyObject != null) && !(dependencyObject is ListBoxItem))
            {
-              return;
+              dependencyObject = VisualTreeHelper.GetParent(dependencyObject);
            }
+
+           if (dependencyObject == null)
+              return;
 
            Board board = boardManager.GetBoardAt(listBox.SelectedIndex);
            Content = new ListWindow(boardManager, board);
