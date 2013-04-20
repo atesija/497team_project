@@ -28,6 +28,9 @@ namespace ToDoApp
 
         private BoardManager boardManager;
 
+        private const String toolTip = "Drag and Drop to move Items from one list to another.\n" +
+                                       "Double click to Edit an Item.";
+
         public ListWindow(BoardManager boardManager_, Board board_)
         {
             InitializeComponent();
@@ -35,6 +38,9 @@ namespace ToDoApp
             boardManager = boardManager_;
             board = board_;
 
+            todoList.ToolTip = toolTip;
+            doingList.ToolTip = toolTip;
+            doneList.ToolTip = toolTip;
             loadData(todoList, 0);
             loadData(doingList, 1);
             loadData(doneList, 2);
@@ -86,6 +92,17 @@ namespace ToDoApp
 
         private void editDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            //checks to see if a listViewItem was actually clicked
+            DependencyObject dep = (DependencyObject)e.OriginalSource;
+            while ((dep != null) && !(dep is ListViewItem))
+            {
+                dep = VisualTreeHelper.GetParent(dep);
+            }
+
+            if (dep == null)
+                return;
+
+            //if a listViewItem has been clicked handle the editing
             ListView curList = (ListView)sender;
             if (curList == null || !curList.HasItems || curList.SelectedIndex == -1)
                 return;
@@ -316,13 +333,6 @@ namespace ToDoApp
             while (current != null);
             return null;
 
-        }
-
-        private void editDoubleClick()
-        {
-
-        }
-
-      
+        }   
     }
 }
