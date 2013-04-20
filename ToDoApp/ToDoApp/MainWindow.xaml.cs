@@ -22,9 +22,12 @@ namespace ToDoApp
         public MainWindow()
         {
             InitializeComponent();
-            WindowHolder.Content = new LoginWindow();
-        }
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
 
-     
+            // This was the only way I could get the focus to work
+            LoginWindow loginWindow = new LoginWindow();
+            WindowHolder.Content = loginWindow;
+            loginWindow.getUsernameBox().Focus();
+        }
     }
 }

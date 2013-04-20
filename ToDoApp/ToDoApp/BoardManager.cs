@@ -51,6 +51,13 @@ namespace ToDoApp
             return boards[at];
         }
 
+        public void SetBoardNameAt(int at, String name)
+        {
+            if (boards.Exists(c => c.GetName() == name))
+                throw new ToDoException("A board with this name already exists");
+            boards[at].SetName(name);
+        }
+
         //Adds a board
         public void AddBoard(Board b)
         {

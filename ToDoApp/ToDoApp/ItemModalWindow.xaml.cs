@@ -37,9 +37,11 @@ namespace ToDoApp
 
         private void initializeWindow()
         {
+            WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             itemNameBox.Text = item.GetName();
             itemDescriptionBox.Text = item.GetDetails();
             ratingBox.SelectedValue = item.GetRank();
+            itemNameBox.Focus();
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
@@ -53,6 +55,30 @@ namespace ToDoApp
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void itemDescriptionBox_KeyDownHandler(object sender, KeyEventArgs e)
+        {
+           if (e.Key == Key.Return)
+           {
+              add_Click(sender, e);
+           }
+           else if (e.Key == Key.Escape)
+           {
+              cancelButton_Click(sender, e);
+           } 
+        }
+
+        private void itemNameBox_KeyDownHandler(object sender, KeyEventArgs e)
+        {
+           if (e.Key == Key.Return)
+           {
+              add_Click(sender, e);
+           }
+           else if (e.Key == Key.Escape)
+           {
+              cancelButton_Click(sender, e);
+           } 
         }
     }
 }

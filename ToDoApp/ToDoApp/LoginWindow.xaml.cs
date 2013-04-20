@@ -26,18 +26,48 @@ namespace ToDoApp
             InitializeComponent();
         }
 
+        // Strictly for setting focus
+        public TextBox getUsernameBox()
+        {
+           return usernameBox;
+        }
+
         private void login_Click(object sender, RoutedEventArgs e)
         {
+            if (usernameBox.Text == "")
+            {
+               MessageBox.Show("Please enter a Username",
+                  "Login Failure", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+               usernameBox.Focus();
+               return;
+            }
+
+            if (passwordInput.Password == "")
+            {
+               MessageBox.Show("Please enter a Password",
+                  "Login Failure", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+               passwordInput.Focus();
+               return;
+            }
+            
             /*
              *call constructor for board manager passing in 
              *if doesn't exisit yet it will create a new file
              *not doing this is version 2
              */
-            boardManager = new BoardManager(userInput.Text, passwordInput.Password);
+
+            boardManager = new BoardManager(usernameBox.Text, passwordInput.Password);
 
             //transfer holder to next view
             Content = new BoardWindow(boardManager);
+        }
 
+        private void userInput_KeyDown_1(object sender, KeyEventArgs e)
+        {
+           if (e.Key == Key.Return)
+           {
+              login_Click(sender, e);
+           }
         }
     }
 }

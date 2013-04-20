@@ -22,7 +22,6 @@ namespace ToDoApp
 
         public BoardWindow(BoardManager boardManager_)
         {
-
             InitializeComponent();
 
             boardManager = boardManager_;
@@ -31,12 +30,17 @@ namespace ToDoApp
             {
                 listBox.Items.Add(boardManager.GetBoardAt(i).GetName());
             }
-
         }
 
-        private void listBox1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void openBoard(object sender, MouseButtonEventArgs e)
         {
+           if (listBox.SelectedItem == null)
+           {
+              return;
+           }
 
+           Board board = boardManager.GetBoardAt(listBox.SelectedIndex);
+           Content = new ListWindow(boardManager, board);
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
@@ -48,26 +52,36 @@ namespace ToDoApp
            Content = new LoginWindow();
         }
 
-        private void add_Click(object sender, RoutedEventArgs e)
+        private void addBoard(object sender, RoutedEventArgs e)
         {
-           AddBoardDialog addDialog = new AddBoardDialog(boardManager, listBox);
+           AddBoardDialog addDialog = new AddBoardDialog(false, boardManager, listBox);
            addDialog.ShowDialog();
         }
 
-        private void open_Click(object sender, RoutedEventArgs e)
+        private void editBoard(object sender, RoutedEventArgs e)
         {
            if (listBox.SelectedItem == null)
            {
-              MessageBox.Show("Please select a Board", "Open Board", 
+              MessageBox.Show("Please select a Board", "Edit Board",
                  MessageBoxButton.OK, MessageBoxImage.Exclamation);
               return;
            }
 
-           Board board = boardManager.GetBoardAt(listBox.SelectedIndex);
-           Content = new ListWindow(boardManager, board);
+           AddBoardDialog editDialog;
+
+           try
+           {
+              editDialog = new AddBoardDialog(true, boardManager, listBox);
+           }
+           catch (ToDoException)
+           {
+              return;
+           }
+
+           editDialog.ShowDialog();
         }
 
-        private void delete_Click(object sender, RoutedEventArgs e)
+        private void deleteBoard(object sender, RoutedEventArgs e)
         {
            // Check that an Item is selected
            if (listBox.SelectedItem == null)
