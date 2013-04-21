@@ -117,5 +117,20 @@ namespace ToDoApp
            listBox.Items.Remove(listBox.SelectedItem);
            listBox.UnselectAll();
         }
+
+        private void openClick(object sender, RoutedEventArgs e)
+        {
+            if (listBox.SelectedIndex >= 0)
+            {
+                Board board = boardManager.GetBoardAt(listBox.SelectedIndex);
+                Content = new ListWindow(boardManager, board);
+            }
+            else
+            {
+                MessageBox.Show("Please select a Board", "Open Board",
+                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+        }
     }
 }

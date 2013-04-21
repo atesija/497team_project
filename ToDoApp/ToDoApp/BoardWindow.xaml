@@ -14,8 +14,9 @@
       </ListBox.ItemTemplate>
       </ListBox>
       <Button Content="Add Board" Height="23" HorizontalAlignment="Left" Margin="10,265,0,0" Name="add" VerticalAlignment="Top" Width="91" Click="addBoard" />
-        <Button Content="Edit Board" Height="23" HorizontalAlignment="Left" Margin="107,265,0,0" Name="open" VerticalAlignment="Top" Width="91" Click="editBoard" />
+        <Button Content="Edit Board" Height="23" HorizontalAlignment="Left" Margin="107,265,0,0" Name="edit" VerticalAlignment="Top" Width="91" Click="editBoard" />
         <Button Content="Delete Board" Height="23" HorizontalAlignment="Right" Margin="0,265,12,0" Name="delete" VerticalAlignment="Top" Width="91" Click="deleteBoard" />
-        
+        <Button Content="Open Board" Height="23" HorizontalAlignment="Right" Margin="0,265,180,0" Name="open" VerticalAlignment="Top" Width="91" Click="openClick" />
+
     </Grid>
 </UserControl>
