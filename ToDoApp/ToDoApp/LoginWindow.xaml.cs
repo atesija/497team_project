@@ -46,12 +46,26 @@ namespace ToDoApp
 
         private void loadFile_Click(object sender, RoutedEventArgs e)
         {
-
+            if (currentFiles.SelectedIndex >= 0)
+            {
+                boardManager = new BoardManager(currentFiles.SelectedItem.ToString(), true);
+                Content = new BoardWindow(boardManager);
+            }
+            else
+            {
+                //error please select a profile
+                MessageBox.Show("Please select a profile or create a new one.", "Load File",
+                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
         }
 
         private void newFile_Click(object sender, RoutedEventArgs e)
         {
-
+            //get string for new name
+            String newFile = "PONY";
+            boardManager = new BoardManager(newFile, false);
+            Content = new BoardWindow(boardManager);
         }
 
     }

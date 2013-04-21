@@ -5,7 +5,7 @@
              ">
    <Grid>
       <Label Content="Boards" FontWeight="Bold" FontSize="15" Height="29" HorizontalAlignment="Left" Margin="10,10,0,0" Name="boardLabel" VerticalAlignment="Top" Width="124" />
-      <Button Content="Logout" Height="23" HorizontalAlignment="Right" Margin="0,10,10,0" Name="logout" VerticalAlignment="Top" Width="130" Click="logout_Click" />
+      <Button Content="Back" Height="23" HorizontalAlignment="Right" Margin="0,10,12,0" Name="back" VerticalAlignment="Top" Width="90" Click="logout_Click" />
       <ListBox Height="210" HorizontalAlignment="Center" Margin="10,43,10,10" Name="listBox" VerticalAlignment="Top" Width="453" MouseDoubleClick="openBoard">
       <ListBox.ItemTemplate>
          <DataTemplate>
