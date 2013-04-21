@@ -26,6 +26,8 @@ namespace ToDoApp
         {
             InitializeComponent();
 
+            boardManager = null;
+
             //populate currentFiles
             string path = Directory.GetCurrentDirectory();
             DirectoryInfo di = new DirectoryInfo(path);
@@ -63,9 +65,9 @@ namespace ToDoApp
         private void newFile_Click(object sender, RoutedEventArgs e)
         {
             //get string for new name
-            String newFile = "PONY";
-            boardManager = new BoardManager(newFile, false);
-            Content = new BoardWindow(boardManager);
+            Window main = Window.GetWindow(this);
+            LoginFileDialog dialog = new LoginFileDialog(main, boardManager);
+            dialog.Show();
         }
 
     }

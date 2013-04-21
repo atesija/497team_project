@@ -99,6 +99,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="LoginFileDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +123,9 @@
     </Compile>
     <Compile Include="AddBoardDialog.xaml.cs">
       <DependentUpon>AddBoardDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LoginFileDialog.xaml.cs">
+      <DependentUpon>LoginFileDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToDoException.cs" />
     <Compile Include="Item.cs" />
