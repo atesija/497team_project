@@ -97,6 +97,11 @@ namespace ToDoApp
             todoLists[listIndex].sortItems();
         }
 
+        private void AddItemToList(int listNum, Item i)
+        {
+            todoLists[listNum].AddItem(i);
+        }
+
         public override void SaveToFile(StreamWriter file)
         {
             file.WriteLine("#");
@@ -108,10 +113,36 @@ namespace ToDoApp
                 file.WriteLine(i.ToString());
                 todoLists[i].SaveToFile(file);
             }
+            file.WriteLine("#");
         }
 
         public override void ReadFromFile(StreamReader file)
         {
+            string s = "?";
+            string [] split;
+            int listNum = 0;
+            Item i;
+
+            while (s != "#")
+            {
+                s = file.ReadLine();
+                if (s == "0")
+                    listNum = 0;
+                else if (s == "1")
+                    listNum = 1;
+                else if (s == "2")
+                    listNum = 2;
+                //End of board
+                else if (s == "#")
+                    break;
+                //Item found
+                else
+                {
+                    split = s.Split('|');
+                    i = new Item(split[0], split[1], Convert.ToInt32(split[2]));
+                    this.AddItemToList(listNum, i);
+                }
+            }
         }
     }
 }

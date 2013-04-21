@@ -51,16 +51,22 @@ namespace ToDoApp
         //Opens a file and reads the data from it
         public void ReadFromFile()
         {
+            //Open the file
             StreamReader file = new StreamReader(fileName + ".board");
             string s;
             Board b;
             while (!file.EndOfStream)
             {
                 s = file.ReadLine();
+
+                //If you hit a board marker
                 if (s == "#")
                 {
                     s = file.ReadLine();
                     b = new Board(s);
+
+                    //populate the board and add it to the manager
+                    b.ReadFromFile(file);
                     this.AddBoard(b);
                 }
             }
