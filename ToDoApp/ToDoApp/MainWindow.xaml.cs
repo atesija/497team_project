@@ -27,7 +27,6 @@ namespace ToDoApp
             // This was the only way I could get the focus to work
             LoginWindow loginWindow = new LoginWindow();
             WindowHolder.Content = loginWindow;
-            loginWindow.getUsernameBox().Focus();
         }
     }
 }

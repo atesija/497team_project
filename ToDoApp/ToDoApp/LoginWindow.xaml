@@ -6,11 +6,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="475">
     <Grid>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="213,137,0,0" Name="usernameBox" VerticalAlignment="Top" Width="120" KeyDown="userInput_KeyDown_1" />
-        <PasswordBox Height="23" HorizontalAlignment="Left" Margin="213,166,0,0" Name="passwordInput" VerticalAlignment="Top" Width="120" KeyDown="userInput_KeyDown_1" />
-        <Button Content="Log In" Height="23" HorizontalAlignment="Left" Margin="213,195,0,0" Name="login" VerticalAlignment="Top" Width="81" Click="login_Click" />
-        <Label Content="Username" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="141,137,0,0" Name="ulabel" VerticalAlignment="Top" />
-        <Label Content="Password" FontWeight="Bold" Height="28" HorizontalAlignment="Left" Margin="144,164,0,0" Name="pswdlabel" VerticalAlignment="Top" />
-        <Label Content="Windows Lists Application" Height="58" HorizontalAlignment="Left" Margin="100,44,0,0" Name="label1" VerticalAlignment="Top" FontSize="20" Width="310" FontWeight="Bold" FontFamily="Verdana"/>
+        <Label Content="ToDo Application" Height="58" HorizontalAlignment="Left" Margin="141,26,0,0" Name="title" VerticalAlignment="Top" FontSize="20" Width="204" FontWeight="Bold" FontFamily="Verdana"/>
+        <Label Content="Select a profile to load." Height="58" HorizontalAlignment="Left" Margin="45,94,0,0" Name="selectfile" VerticalAlignment="Top" FontSize="15" Width="238" FontWeight="Bold" FontFamily="Verdana"/>
+        <ComboBox Height="34" HorizontalAlignment="Left" Margin="45,145,0,0" Name="currentFiles" FontSize="15"  VerticalContentAlignment="Center" VerticalAlignment="Top" Width="211" />
+        <Button Content="Load File" Height="34" HorizontalAlignment="Left" Margin="309,145,0,0" Name="loadFile" VerticalAlignment="Top" Width="105" Click="loadFile_Click" />
+        <Button Content="Create New File" Height="34" HorizontalAlignment="Left" Margin="309,196,0,0" Name="newFile" VerticalAlignment="Top" Width="105" Click="newFile_Click" />
     </Grid>
 </UserControl>

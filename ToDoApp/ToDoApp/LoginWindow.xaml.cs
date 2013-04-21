@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace ToDoApp
 {
@@ -24,50 +25,34 @@ namespace ToDoApp
         public LoginWindow()
         {
             InitializeComponent();
-        }
 
-        // Strictly for setting focus
-        public TextBox getUsernameBox()
-        {
-           return usernameBox;
-        }
-
-        private void login_Click(object sender, RoutedEventArgs e)
-        {
-            if (usernameBox.Text == "")
+            //populate currentFiles
+            string path = Directory.GetCurrentDirectory();
+            DirectoryInfo di = new DirectoryInfo(path);
+            FileInfo[] TXTFiles = di.GetFiles("*.board");
+            if (TXTFiles.Length == 0)
             {
-               MessageBox.Show("Please enter a Username",
-                  "Login Failure", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-               usernameBox.Focus();
-               return;
+                //log.Info("no files present");
+                //create default option?
+            }
+            foreach (var fi in TXTFiles)
+            {
+                String name = System.IO.Path.GetFileNameWithoutExtension(fi.Name);
+                currentFiles.Items.Add(name);
+                currentFiles.SelectedIndex = 0;
             }
 
-            if (passwordInput.Password == "")
-            {
-               MessageBox.Show("Please enter a Password",
-                  "Login Failure", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-               passwordInput.Focus();
-               return;
-            }
-            
-            /*
-             *call constructor for board manager passing in 
-             *if doesn't exisit yet it will create a new file
-             *not doing this is version 2
-             */
-
-            boardManager = new BoardManager(usernameBox.Text, passwordInput.Password);
-
-            //transfer holder to next view
-            Content = new BoardWindow(boardManager);
         }
 
-        private void userInput_KeyDown_1(object sender, KeyEventArgs e)
+        private void loadFile_Click(object sender, RoutedEventArgs e)
         {
-           if (e.Key == Key.Return)
-           {
-              login_Click(sender, e);
-           }
+
         }
+
+        private void newFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }
