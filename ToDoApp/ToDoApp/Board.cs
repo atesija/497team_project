@@ -99,21 +99,15 @@ namespace ToDoApp
 
         public override void SaveToFile(StreamWriter file)
         {
-            //TODO: save board to file
             file.WriteLine("#");
-            file.WriteLine("B");
             file.WriteLine(this.GetName());
-            file.WriteLine("B");
 
             //Save each todo list to file
             for (int i = 0; i < NUM_LISTS; ++i)
             {
                 file.WriteLine(i.ToString());
                 todoLists[i].SaveToFile(file);
-                file.WriteLine(i.ToString());
             }
-
-            file.WriteLine("#");
         }
 
         public override void ReadFromFile(StreamReader file)

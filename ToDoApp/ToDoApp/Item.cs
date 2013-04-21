@@ -58,13 +58,5 @@ namespace ToDoApp
         {
             return this.rank;
         }
-
-        public override void SaveToFile(StreamWriter file)
-        {
-        }
-
-        public override void ReadFromFile(StreamReader file)
-        {
-        }
     }
 }

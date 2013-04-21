@@ -23,6 +23,17 @@ namespace ToDoApp
             boards = new List<Board>();
         }
 
+        public BoardManager(string fileName, bool loadFromFile)
+        {
+            this.fileName = fileName;
+            boards = new List<Board>();
+
+            if (loadFromFile)
+            {
+                this.ReadFromFile();
+            }
+        }
+
         public int GetSize()
         {
             return boards.Count;
@@ -31,7 +42,7 @@ namespace ToDoApp
         //Opens a file and saves the entire tree (Board, List, Item) to the file
         public void SaveToFile()
         {
-            StreamWriter file = new StreamWriter(fileName + ".txt");
+            StreamWriter file = new StreamWriter(fileName + ".board");
             foreach (Board b in boards)
                 b.SaveToFile(file);
             file.Close();
@@ -40,8 +51,19 @@ namespace ToDoApp
         //Opens a file and reads the data from it
         public void ReadFromFile()
         {
-            StreamReader file = new StreamReader(fileName + ".txt");
-
+            StreamReader file = new StreamReader(fileName + ".board");
+            string s;
+            Board b;
+            while (!file.EndOfStream)
+            {
+                s = file.ReadLine();
+                if (s == "#")
+                {
+                    s = file.ReadLine();
+                    b = new Board(s);
+                    this.AddBoard(b);
+                }
+            }
             file.Close();
         }
 
