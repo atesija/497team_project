@@ -42,6 +42,9 @@ namespace ToDoApp
         //Opens a file and saves the entire tree (Board, List, Item) to the file
         public void SaveToFile()
         {
+            if (this == null)
+               return;
+
             StreamWriter file = new StreamWriter(fileName + ".board");
             foreach (Board b in boards)
                 b.SaveToFile(file);

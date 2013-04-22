@@ -39,6 +39,5 @@ namespace ToDoApp
         {
             boardManager = boardManager_;
         }
-       
     }
 }

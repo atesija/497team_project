@@ -42,10 +42,18 @@ namespace ToDoApp
             itemDescriptionBox.Text = item.GetDetails();
             ratingBox.SelectedValue = item.GetRank();
             itemNameBox.Focus();
+            itemNameBox.SelectAll();
         }
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
+            if (itemNameBox.Text == "")
+            {
+               MessageBox.Show("Please give this item a name", "Item",
+                  MessageBoxButton.OK, MessageBoxImage.Exclamation);
+               return;
+            }
+
             item.SetName(itemNameBox.Text);
             item.SetDetails(itemDescriptionBox.Text);
             item.SetRank((int)ratingBox.SelectedItem);
