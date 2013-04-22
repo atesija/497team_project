@@ -344,6 +344,7 @@ namespace ToDoApp
                     {
                         board.MoveItem(from, draggedList.SelectedIndex, to);
                         draggedList.Items.Remove(draggedList.SelectedItem);
+                        sortList(listView, to);
                     }
                 }
             }

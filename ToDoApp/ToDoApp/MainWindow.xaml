@@ -4,6 +4,6 @@
         Title="To Do List" Height="350" Width="525"
         MinHeight="350" MinWidth="525"
         Background="LightBlue"
-        Icon="Icon.ico">
+        Icon="Icon.ico" ResizeMode="NoResize" Closed="Window_Closed">
     <ContentControl Name="WindowHolder"/>
 </Window>

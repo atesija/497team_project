@@ -20,9 +20,9 @@ namespace ToDoApp
     public partial class LoginFileDialog : Window
     {
         BoardManager boardManager;
-        Window mainWindow;
+        MainWindow mainWindow;
 
-        public LoginFileDialog(Window mainWindow_, BoardManager boardManager_)
+        public LoginFileDialog(MainWindow mainWindow_, BoardManager boardManager_)
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
@@ -44,6 +44,7 @@ namespace ToDoApp
                     boardManager = new BoardManager(newName, false);
                     this.Close();
                     mainWindow.Content = new BoardWindow(boardManager);
+                    mainWindow.updateBoardManager(boardManager);
                 }
                 else
                 {

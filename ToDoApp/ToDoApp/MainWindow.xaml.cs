@@ -19,14 +19,26 @@ namespace ToDoApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        BoardManager boardManager;
         public MainWindow()
         {
             InitializeComponent();
             WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-
+            boardManager = null;
             // This was the only way I could get the focus to work
             LoginWindow loginWindow = new LoginWindow();
             WindowHolder.Content = loginWindow;
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            boardManager.SaveToFile();
+        }
+
+        public void updateBoardManager(BoardManager boardManager_)
+        {
+            boardManager = boardManager_;
+        }
+       
     }
 }

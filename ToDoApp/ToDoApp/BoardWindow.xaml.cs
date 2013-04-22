@@ -53,7 +53,6 @@ namespace ToDoApp
         {
            // Save data
            boardManager.SaveToFile();
-
            // Direct user to login screen
            Content = new LoginWindow();
         }

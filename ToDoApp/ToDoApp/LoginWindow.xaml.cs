@@ -50,8 +50,11 @@ namespace ToDoApp
         {
             if (currentFiles.SelectedIndex >= 0)
             {
+
                 boardManager = new BoardManager(currentFiles.SelectedItem.ToString(), true);
                 Content = new BoardWindow(boardManager);
+                MainWindow main = (MainWindow)Window.GetWindow(this);
+                main.updateBoardManager(boardManager);
             }
             else
             {
@@ -65,7 +68,7 @@ namespace ToDoApp
         private void newFile_Click(object sender, RoutedEventArgs e)
         {
             //get string for new name
-            Window main = Window.GetWindow(this);
+            MainWindow main = (MainWindow)Window.GetWindow(this);
             LoginFileDialog dialog = new LoginFileDialog(main, boardManager);
             dialog.Show();
         }
