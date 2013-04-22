@@ -7,9 +7,9 @@
              d:DesignHeight="300" d:DesignWidth="475">
     <Grid>
         <Label Content="ToDo Application" Height="58" HorizontalAlignment="Left" Margin="141,26,0,0" Name="title" VerticalAlignment="Top" FontSize="20" Width="204" FontWeight="Bold" FontFamily="Verdana"/>
-        <Label Content="Select a profile to load." Height="58" HorizontalAlignment="Left" Margin="45,94,0,0" Name="selectfile" VerticalAlignment="Top" FontSize="15" Width="238" FontWeight="Bold" FontFamily="Verdana"/>
-        <ComboBox Height="34" HorizontalAlignment="Left" Margin="45,145,0,0" Name="currentFiles" FontSize="15"  VerticalContentAlignment="Center" VerticalAlignment="Top" Width="211" />
-        <Button Content="Load File" Height="34" HorizontalAlignment="Left" Margin="309,145,0,0" Name="loadFile" VerticalAlignment="Top" Width="105" Click="loadFile_Click" />
-        <Button Content="Create New File" Height="34" HorizontalAlignment="Left" Margin="309,196,0,0" Name="newFile" VerticalAlignment="Top" Width="105" Click="newFile_Click" />
+        <Label Content="Select an existing file" Height="42" HorizontalAlignment="Left" Margin="69,110,0,0" Name="selectfile" VerticalAlignment="Top" FontSize="15" Width="192" FontWeight="Bold" FontFamily="Verdana"/>
+      <ComboBox FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="34" HorizontalAlignment="Left" Margin="60,145,0,0" Name="currentFiles" FontSize="15"  VerticalContentAlignment="Center" VerticalAlignment="Top" Width="211" />
+        <Button Content="Load File" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="34" HorizontalAlignment="Right" Margin="0,145,60,0" Name="loadFile" VerticalAlignment="Top" Width="105" Click="loadFile_Click" />
+      <Button Content="Create New File" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="34" HorizontalAlignment="Right" Margin="0,196,60,0" Name="newFile" VerticalAlignment="Top" Width="105" Click="newFile_Click" />
     </Grid>
 </UserControl>

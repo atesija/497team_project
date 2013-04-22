@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Item" Height="300" Width="300" ResizeMode="NoResize">
     <Grid>
-      <TextBox Height="28" HorizontalAlignment="Right" Margin="0,12,24,0" Name="itemNameBox" VerticalAlignment="Top" Width="159" KeyDown="itemNameBox_KeyDownHandler" />
-        <Label Content="Item Name" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="itemNameLabel" VerticalAlignment="Top" Width="77" />
-        <Button Content="Confirm" Height="23" HorizontalAlignment="Left" Margin="23,226,0,0" Name="confirmButton" VerticalAlignment="Top" Width="75" Click="add_Click" />
-      <TextBox Height="102" HorizontalAlignment="Left" Margin="12,68,0,0" Name="itemDescriptionBox" VerticalAlignment="Top" Width="254" KeyDown="itemDescriptionBox_KeyDownHandler" />
-        <Label Content="Item Description" Height="28" HorizontalAlignment="Left" Margin="12,46,0,0" Name="itemDescriptionLabel" VerticalAlignment="Top" Width="102" />
-        <Label Content="Rating:" Height="28" HorizontalAlignment="Left" Margin="12,184,0,0" Name="ratingLabel" VerticalAlignment="Top" Width="47" />
-        <ComboBox Height="23" HorizontalAlignment="Left" Margin="65,189,0,0" Name="ratingBox" VerticalAlignment="Top" Width="120" />
-        <Button Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="179,226,0,0" Name="cancelButton" VerticalAlignment="Top" Width="75" Click="cancelButton_Click" />
+      <TextBox Height="30" HorizontalAlignment="Right" Margin="0,10,10,0" Name="itemNameBox" VerticalAlignment="Top" Width="180" KeyDown="itemNameBox_KeyDownHandler" />
+        <Label Content="Name" Height="30" HorizontalAlignment="Left" Margin="10,10,0,0" Name="itemNameLabel" VerticalAlignment="Top" Width="77" />
+      <Button Content="Confirm" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="23" HorizontalAlignment="Right" Margin="0,225,95,0" Name="confirmButton" VerticalAlignment="Top" Width="75" Click="add_Click" />
+      <TextBox Height="130" HorizontalAlignment="Right" Margin="0,50,10,0" Name="itemDescriptionBox" VerticalAlignment="Top" Width="180" KeyDown="itemDescriptionBox_KeyDownHandler" />
+        <Label Content="Description" Height="28" HorizontalAlignment="Left" Margin="10,52,0,0" Name="itemDescriptionLabel" VerticalAlignment="Top" Width="77" />
+        <Label Content="Rating" Height="28" HorizontalAlignment="Left" Margin="10,186,0,0" Name="ratingLabel" VerticalAlignment="Top" Width="47" />
+      <ComboBox Height="23" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" HorizontalAlignment="Right" Margin="0,190,10,0" Name="ratingBox" VerticalAlignment="Top" Width="180" />
+      <Button Content="Cancel" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="23" HorizontalAlignment="Right" Margin="0,225,10,0" Name="cancelButton" VerticalAlignment="Top" Width="75" Click="cancelButton_Click" />
     </Grid>
 </Window>

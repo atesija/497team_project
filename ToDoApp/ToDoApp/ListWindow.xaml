@@ -22,16 +22,15 @@
                   HorizontalAlignment="Left" Margin="325,59,0,0" Name="doneList" VerticalAlignment="Top" Width="144" />
 
         <Label Content="To Do" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="5,32,0,0" Name="todoLabel" VerticalAlignment="Top" Width="81" />
-        <Label Content="Doing" FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="166,32,0,0" Name="doingLabel" VerticalAlignment="Top" Width="81" />
+        <Label Content="Doing" FontWeight="Bold" Height="27" HorizontalAlignment="Left" Margin="166,32,0,0" Name="doingLabel" VerticalAlignment="Top" Width="81" />
         <Label Content="Done"  FontWeight="Bold" Height="25" HorizontalAlignment="Left" Margin="325,32,0,0" Name="doneLabel" VerticalAlignment="Top" Width="81" />
 
-        <Button Content="Add Item" Height="23" HorizontalAlignment="Left" Margin="5,274,0,0" Name="add" VerticalAlignment="Top" Width="90" Click="add_Click" />
-        <Button Content="Edit Item" Height="23" HorizontalAlignment="Right" Margin="0,274,284,0" Name="edit" VerticalAlignment="Top" Width="90" Click="edit_Click" />
-        <Button Content="Delete Item" Height="23" HorizontalAlignment="Left" Margin="379,273,0,0" Name="delete" VerticalAlignment="Top" Width="90
-                " Click="delete_Click" />
-        
-        <Button Content="Back" Height="23" HorizontalAlignment="Left" Margin="409,5,0,0" Name="backButton" VerticalAlignment="Top" Width="57"
+      <Button Content="Add Item" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="23" HorizontalAlignment="Left" Margin="0,274,0,0" Name="add" VerticalAlignment="Top" Width="90" Click="add_Click" />
+      <Button Content="Edit Item" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="23" HorizontalAlignment="Left" Margin="100,274,0,0" Name="edit" VerticalAlignment="Top" Width="90" Click="edit_Click" />
+      <Button Content="Delete Item" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="23" HorizontalAlignment="Right" Margin="0,273,0,0" Name="delete" VerticalAlignment="Top" Width="90" Click="delete_Click" />
+
+      <Button Content="Back" FontWeight="Bold" Background="AliceBlue" BorderBrush="LightBlue" Height="23" HorizontalAlignment="Right" Margin="0,5,0,0" Name="backButton" VerticalAlignment="Top" Width="66"
                 Click="backButton_Click"/>
-        <Label Content="Lists" FontWeight="Bold" FontSize="15" Height="29" HorizontalAlignment="Left" Margin="1,2,0,0" Name="boardLabel" VerticalAlignment="Top" Width="124" />
+        <Label Content="Lists" FontWeight="Bold" FontSize="15" Height="29" HorizontalAlignment="Left" Margin="0,2,0,0" Name="boardLabel" VerticalAlignment="Top" Width="125" />
     </Grid>
 </UserControl>

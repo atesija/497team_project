@@ -43,7 +43,6 @@ namespace ToDoApp
                 currentFiles.Items.Add(name);
                 currentFiles.SelectedIndex = 0;
             }
-
         }
 
         private void loadFile_Click(object sender, RoutedEventArgs e)

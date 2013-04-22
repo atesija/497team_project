@@ -58,8 +58,6 @@ namespace ToDoApp
 
         private void add_Click(object sender, RoutedEventArgs e)
         {
-
-            //TODO: Create dialog box that returns a string or Item
             Item item = new Item();
 
             ItemModalWindow addItem = new ItemModalWindow(item);
@@ -88,8 +86,6 @@ namespace ToDoApp
             }
 
             sortList(todoList, 0);
-
-
         }
 
         private void editDoubleClick(object sender, MouseButtonEventArgs e)
@@ -154,13 +150,12 @@ namespace ToDoApp
         private void edit_Click(object sender, RoutedEventArgs e)
         {
             //open dialog box that returns strings or item
-            Item item = new Item("updated", "blerrrrrg", 2);
             int listIndex = -1;
 
             //try catch should be in diaglog box but leaving it here
 
             ListView curList = null;
-            //eddit currently selected item
+            //edit currently selected item
             if (todoList.SelectedIndex >= 0)
             {
                 //Add item to the board
@@ -180,30 +175,36 @@ namespace ToDoApp
                 listIndex = 2;
             }
 
-
             if (curList != null)
             {
-                int curSelected = curList.SelectedIndex;
-                item = board.GetItemAt(listIndex, curSelected);
-                Item newItem = new Item(item.GetName(), item.GetDetails(), item.GetRank());
-                ItemModalWindow addItem = new ItemModalWindow(newItem);
-                addItem.ShowDialog();
+               int curSelected = curList.SelectedIndex;
+               Item item = board.GetItemAt(listIndex, curSelected);
+               Item newItem = new Item(item.GetName(), item.GetDetails(), item.GetRank());
+               ItemModalWindow addItem = new ItemModalWindow(newItem);
+               addItem.ShowDialog();
 
-                try
-                {
-                    board.EditItem(listIndex, curSelected, newItem);
-                }
-                catch (ToDoException exception)
-                {
-                    MessageBox.Show(exception.getMessage(), "Edit Item",
-                       MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                    edit_Click(sender, e);
-                } 
-                curList.Items.RemoveAt(curSelected);
-                curList.Items.Insert(curSelected, item.GetName());
-                curList.SelectedIndex = curSelected;
+               try
+               {
+                  board.EditItem(listIndex, curSelected, newItem);
+               }
+               catch (ToDoException exception)
+               {
+                  MessageBox.Show(exception.getMessage(), "Edit Item",
+                     MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                  edit_Click(sender, e);
+               }
+               curList.Items.RemoveAt(curSelected);
+               curList.Items.Insert(curSelected, item.GetName());
+               curList.SelectedIndex = curSelected;
 
-                sortList(curList, listIndex);
+               sortList(curList, listIndex);
+            }
+            else
+            {
+               // No item selected
+               MessageBox.Show("Please select an item", "Edit Item",
+                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
+               return;
             }
         }
 
@@ -225,7 +226,13 @@ namespace ToDoApp
                 board.DeleteItemAt(2, doneList.SelectedIndex);
                 doneList.Items.RemoveAt(doneList.SelectedIndex);
             }
-
+            else
+            {
+               // No item selected
+               MessageBox.Show("Please select an item", "Delete Item",
+                 MessageBoxButton.OK, MessageBoxImage.Exclamation);
+               return;
+            }
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
